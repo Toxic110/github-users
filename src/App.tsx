@@ -1,7 +1,6 @@
 import './assets/styles/app.scss';
 
-// import { Button } from './ui-components';
-import { Button } from '@ui/Button';
+import { Button } from 'Ui';
 
 function App() {
   return (
