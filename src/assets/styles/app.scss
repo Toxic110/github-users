@@ -1,2 +1,11 @@
-@import url('reset.scss');
-@import url('header.scss');
+@import './utils/_variables.scss';
+
+@import './base/_reset.scss';
+
+@import './ui-kit/_buttons.scss';
+@import './ui-kit/_input.scss';
+@import './ui-kit/_label.scss';
+@import './ui-kit/_select.scss';
+@import './ui-kit/_pagination.scss';
+
+@import './blocks/_header.scss';

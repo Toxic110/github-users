@@ -21,6 +21,7 @@
     "browserslist": "^4.18.1",
     "camelcase": "^6.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "classnames": "^2.3.2",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
     "dotenv": "^10.0.0",
@@ -133,9 +134,19 @@
     "modulePaths": [
       "/Users/maksimvorobev/Documents/projects/ipr/test/formatting-project/src"
     ],
+    "moduleDirectories": [
+      ".",
+      "src",
+      "node_modules"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "^@ui(.*)$": "<rootDir>/src/ui-components/$1",
+      "^@components(.*)$": "<rootDir>/src/components/$1",
+      "^@pages(.*)$": "<rootDir>/src/pages/$1",
+      "^@services(.*)$": "<rootDir>/src/services/$1",
+      "^@hooks(.*)$": "<rootDir>/src/hooks/$1"
     },
     "moduleFileExtensions": [
       "web.js",

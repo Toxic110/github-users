@@ -1,0 +1,28 @@
+// styles
+$font-size-default: 16px !default;
+$radius: 16px !default;
+$transition: all 0.2s ease-in-out;
+
+// grid
+$container-tablet: 1120px !default;
+$container-mob-tablet: 992px !default;
+$container-mob-tablet-xs: 850px !default;
+$container-mobile: 768px !default;
+$container-mobile-xs: 480px !default;
+
+//fonts
+$font-family-text: 'UI 2 Regular', sans-serif !default;
+$font-weight-light: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semi-bold: 600 !default;
+$font-weight-bold: 700 !default;
+
+// colors
+$color-button-primary: #1e87f0;
+$color-button-primary-hover: #0f7ae5;
+$color-button-primary-active: #0e6dcd;
+$color-white: #ffffff;
+$color-black: #222222;
+$color-grey: #b2b2b2;
+$color-grey-hard: #999999;
