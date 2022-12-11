@@ -1,7 +1,10 @@
 import { FC } from 'react';
 
+/** Интерфейс для инпута. */
 interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
+  /** Имя инпута. */
   name: string;
+  /** Именование инпута. */
   label: string;
 }
 

@@ -20,15 +20,15 @@ function App() {
       </header>
       <main>
         <RouterProvider router={clientRouter} />
-        {/* <Button variabel="primary">test</Button>
-      <Input name="name" label="test" />
-      <Select name="test" label="select" options={mokeOptions} />
-      <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={100}
-        onPageChange={(page: number) => setCurrentPage(page)}
-      /> */}
+        <Button variabel="primary">test</Button>
+        <Input name="name" label="test" />
+        <Select name="test" label="select" options={mokeOptions} />
+        <Pagination
+          className="pagination-bar"
+          currentPage={currentPage}
+          totalCount={100}
+          onPageChange={(page: number) => setCurrentPage(page)}
+        />
       </main>
     </>
   );

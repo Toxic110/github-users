@@ -7,10 +7,15 @@ const range = (start: number, end: number) => {
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
+/** Интерфейс пагинации. */
 interface IPagination {
+  /** Общее количество. */
   totalCount: number;
+  /** Размер страницы. */
   pageSize: number;
+  /** Колличество после которого отображается троеточие. */
   siblingCount: number;
+  /** Текущая страница. */
   currentPage: number;
 }
 

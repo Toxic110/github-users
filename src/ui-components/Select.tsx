@@ -1,17 +1,27 @@
 import classNames from 'classnames';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
+/** Опции для селекта. */
 interface SelectOption {
+  /** Выводимое значение для пользователя. */
   label: string;
+  /** Значение опции. */
   value: number;
 }
 
+/** Пропсы селекта. */
 interface ISelect {
+  /** Имя. */
   name: string;
+  /** Именование селекта. */
   label?: string;
+  /** Массив опций. */
   options: SelectOption[];
+  /** Признак приминения других стилей. */
   extraSmall?: boolean;
+  /** Функция выбрасывающая значение наружу. */
   valueSetter?: (val: number) => void;
+  /** Дефолтное значение. */
   defaultValue?: SelectOption;
 }
 

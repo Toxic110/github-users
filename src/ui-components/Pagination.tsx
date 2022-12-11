@@ -3,11 +3,17 @@ import { Select } from '@ui';
 import classnames from 'classnames';
 import { FC, useState } from 'react';
 
+/** Пропсы пагинации. */
 interface IPagination {
+  /** Функция смены страницы. */
   onPageChange(val: number): void;
+  /** Общее количество. */
   totalCount: number;
-  siblingCount?: 1 | undefined;
+  /** Колличество после которого отображается троеточие. */
+  siblingCount?: number | undefined;
+  /** Текущая страница. */
   currentPage: number;
+  /** Имя класса. */
   className: string;
 }
 
