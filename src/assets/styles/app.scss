@@ -1,11 +1,12 @@
-@import './utils/_variables.scss';
+@import './utils/_variables';
 
-@import './base/_reset.scss';
+@import './base/_reset';
 
-@import './ui-kit/_buttons.scss';
-@import './ui-kit/_input.scss';
-@import './ui-kit/_label.scss';
-@import './ui-kit/_select.scss';
-@import './ui-kit/_pagination.scss';
+@import './ui-kit/_buttons';
+@import './ui-kit/_input';
+@import './ui-kit/_label';
+@import './ui-kit/_select';
+@import './ui-kit/_pagination';
 
-@import './blocks/_header.scss';
+@import './blocks/_header';
+@import './blocks/_not-found';

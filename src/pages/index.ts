@@ -1,1 +1,2 @@
-export * from './temp';
+export * from './main-page';
+export * from './user-page';

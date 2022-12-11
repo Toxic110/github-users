@@ -2,6 +2,9 @@ import './assets/styles/app.scss';
 
 import { Button, Input, Pagination, Select } from '@ui';
 import { useState } from 'react';
+import { RouterProvider } from 'react-router-dom';
+
+import { clientRouter } from './routes';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,11 +14,13 @@ function App() {
   ];
 
   return (
-    <div className="App">
+    <>
       <header className="app__header">
         <span>Github users</span>
       </header>
-      <Button variabel="primary">test</Button>
+      <main>
+        <RouterProvider router={clientRouter} />
+        {/* <Button variabel="primary">test</Button>
       <Input name="name" label="test" />
       <Select name="test" label="select" options={mokeOptions} />
       <Pagination
@@ -23,8 +28,9 @@ function App() {
         currentPage={currentPage}
         totalCount={100}
         onPageChange={(page: number) => setCurrentPage(page)}
-      />
-    </div>
+      /> */}
+      </main>
+    </>
   );
 }
 
