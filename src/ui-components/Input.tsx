@@ -11,7 +11,7 @@ interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Input: FC<IInput> = ({ label, name, ...rest }) => {
   return (
     <label>
-      <span className="ui-label">{label}</span>
+      <div className="ui-label">{label}</div>
       <input
         name={name}
         className="ui-input"

@@ -77,9 +77,9 @@ export const Select: FC<ISelect> = ({
         extraSmall && 'ui-select--small',
       )}
     >
-      <span className="ui-label" onClick={handleSetVisible} role="presentation">
+      <div className="ui-label" onClick={handleSetVisible} role="presentation">
         {label}
-      </span>
+      </div>
       <div
         className={classNames(
           'ui-input ui-select__inner',

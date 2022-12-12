@@ -1,9 +1,10 @@
 .app {
   &__header {
+    height: 60px;
     padding: 20px;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 700;
-    color: #fff;
-    background: #0740c4;
+    color: $color-white;
+    background: $color-header;
   }
 }

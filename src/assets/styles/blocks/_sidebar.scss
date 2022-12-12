@@ -1,0 +1,49 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  height: calc(100vh - 60px);
+  padding: 20px;
+  background: $color-white;
+  overflow: auto;
+  transition: $transition;
+
+  &--hide {
+    width: 0;
+    padding: 0;
+  }
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__arrow {
+    width: 24px;
+    height: 24px;
+    background: url('../../images/sidebar-arrow.svg') no-repeat center center/cover;
+    cursor: pointer;
+  }
+}
+
+.sidebar-body {
+  margin: 25px 0;
+
+  &__row {
+    & + & {
+      margin-top: 30px;
+    }
+  }
+}
+
+.sidebar-footer {
+  display: flex;
+  padding-top: 20px;
+  margin-top: auto;
+  border-top: 1px solid $color-grey;
+
+  &__button {
+    width: 50%;
+  }
+}

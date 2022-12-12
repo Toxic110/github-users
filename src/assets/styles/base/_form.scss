@@ -1,0 +1,12 @@
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset;
+    transition: background-color 5000s ease-in-out 0s;
+
+    @at-root & {
+      -webkit-text-fill-color: $color-black;
+    }
+  }
+}
