@@ -1,4 +1,5 @@
 .sidebar {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 290px;
@@ -24,6 +25,7 @@
     height: 24px;
     background: url('../../images/sidebar-arrow.svg') no-repeat center center/cover;
     cursor: pointer;
+    transition: $transition;
   }
 }
 

@@ -1,0 +1,55 @@
+.ui-table {
+  width: 100%;
+  display: grid;
+  overflow: auto;
+  border: 1px solid $color-grey;
+
+  &__wrapper {
+    background: $color-white;
+    overflow: hidden;
+  }
+
+  thead,
+  tbody,
+  tr {
+    display: contents;
+  }
+
+  th {
+    position: relative;
+    font-size: 18px;
+    border-bottom: 1px solid $color-grey;
+    background: $color-white-light;
+  }
+
+  th + th {
+    border-left: 1px solid $color-grey;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 16px 20px;
+    min-width: 100px;
+  }
+
+  th span,
+  td span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
+
+  tr td {
+    border-bottom: 1px solid $color-grey;
+  }
+
+  tr {
+    &:last-child {
+      td {
+        border-bottom: 0;
+      }
+    }
+  }
+}

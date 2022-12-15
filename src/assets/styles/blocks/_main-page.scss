@@ -1,0 +1,18 @@
+.main-page {
+  display: flex;
+
+  &__open-sidebar {
+    width: 0;
+    height: 30px;
+    margin-top: 15px;
+    background: url('../../images/sidebar-arrow.svg') no-repeat center center/80%,
+      $color-white;
+    transform: scale(-1);
+    cursor: pointer;
+    transition: $transition;
+
+    &--show {
+      width: 30px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.main-table {
+  width: calc(100% - 350px);
+  margin: 30px;
+  padding: 20px;
+  border-radius: $radius;
+  background: $color-white;
+
+  &--full-width {
+    width: calc(100% - 60px);
+  }
+}
