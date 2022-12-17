@@ -76,6 +76,7 @@ export const Pagination: FC<IPagination> = (props) => {
             extraSmall
             valueSetter={setPageSize}
             defaultValue={paginationCountOptions[0]}
+            menuPosition="top"
           />
         </div>
       </div>

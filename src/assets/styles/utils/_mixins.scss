@@ -1,0 +1,17 @@
+@function pxToVwMobile($num) {
+  @return $num / 1px / 320 * 100vw;
+}
+
+@function pxToVwHD($num) {
+  @return $num / 1px / 1920 * 100vw;
+}
+
+@function pxToVwLayoutSize($num) {
+  @return $num / 1px / 1170 * 100vw;
+}
+
+@mixin mediaToDown($width, $device: 'all') {
+  @media #{$device} and (max-width: #{$width - 1px}) {
+    @content;
+  }
+}

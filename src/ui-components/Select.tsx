@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
+/** Позиция дропдауна. */
+type MenuPosition = 'bottom' | 'top';
+
 /** Опции для селекта. */
 interface SelectOption {
   /** Выводимое значение для пользователя. */
@@ -23,6 +26,8 @@ interface ISelect {
   valueSetter?: (val: number) => void;
   /** Дефолтное значение. */
   defaultValue?: SelectOption;
+  /** menuPosition. */
+  menuPosition?: MenuPosition;
 }
 
 export const Select: FC<ISelect> = ({
@@ -32,6 +37,7 @@ export const Select: FC<ISelect> = ({
   extraSmall,
   valueSetter,
   defaultValue,
+  menuPosition = 'bottom',
 }) => {
   const [selectedValue, setSelectedValue] = useState<number>(defaultValue?.value || 0);
   const [selectedLabel, setSelectedLabel] = useState<string>(defaultValue?.label || '');
@@ -77,7 +83,11 @@ export const Select: FC<ISelect> = ({
         extraSmall && 'ui-select--small',
       )}
     >
-      <div className="ui-label" onClick={handleSetVisible} role="presentation">
+      <div
+        className={classNames('ui-label', extraSmall && 'ui-label--small')}
+        onClick={handleSetVisible}
+        role="presentation"
+      >
         {label}
       </div>
       <div
@@ -99,7 +109,10 @@ export const Select: FC<ISelect> = ({
       />
       {isOpen && (
         <div
-          className="ui-select__menu-wrapper"
+          className={classNames(
+            'ui-select__menu-wrapper',
+            `ui-select__menu-wrapper--${menuPosition}`,
+          )}
           style={{ height: options.length > 6 ? '150px' : 'auto' }}
         >
           <ul

@@ -11,7 +11,6 @@
   &__menu-wrapper {
     position: absolute;
     left: 0;
-    top: 70px;
     width: 100%;
     max-height: 200px;
     height: 150px;
@@ -21,6 +20,14 @@
     background: $color-white;
     z-index: 10;
     overflow: hidden;
+
+    &--bottom {
+      top: 70px;
+    }
+
+    &--top {
+      bottom: 70px;
+    }
   }
 
   &__menu {
@@ -66,7 +73,13 @@
 
   &--small {
     #{$select}__menu-wrapper {
-      top: 38px;
+      &--bottom {
+        top: 38px;
+      }
+
+      &--top {
+        bottom: 38px;
+      }
     }
 
     &:after {

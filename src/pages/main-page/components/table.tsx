@@ -57,6 +57,210 @@ const TableContent = () => {
           <span>Alexander</span>
         </td>
       </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Family Sized Lobster Dinner</span>
+        </td>
+        <td>
+          <span>3456781234</span>
+        </td>
+        <td>
+          <span>$320.00</span>
+        </td>
+        <td>
+          <span>In Progress</span>
+        </td>
+        <td>
+          <span>Alexander</span>
+        </td>
+      </tr>
     </tbody>
   );
 };
