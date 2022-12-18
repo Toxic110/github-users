@@ -1,5 +1,7 @@
 .app {
   &__header {
+    display: flex;
+    justify-content: space-between;
     height: 60px;
     padding: 20px;
     font-size: 22px;

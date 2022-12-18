@@ -8,5 +8,9 @@
 
   &--full-width {
     width: calc(100% - 60px);
+
+    @include mediaToDown($container-tablet) {
+      width: calc(100% - 90px);
+    }
   }
 }

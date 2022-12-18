@@ -19,7 +19,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
     <div className={classNames('sidebar', hide && 'sidebar--hide')}>
       <div className="sidebar-head">
         <div className="sidebar-head__title">Фильтры</div>
-        <div className="sidebar-head__arrow" onClick={handleClose} role="presentation" />
+        <div className="sidebar-head__arrow" onClick={handleClose} />
       </div>
       <div className="sidebar-body">
         <div className="sidebar-body__row">

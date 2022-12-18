@@ -86,7 +86,6 @@ export const Pagination: FC<IPagination> = (props) => {
             disabled: currentPage === 1,
           })}
           onClick={onToStart}
-          role="presentation"
         >
           <div className="ui-pagination__arrow ui-pagination__arrow--double ui-pagination__arrow--left"></div>
         </li>
@@ -95,7 +94,6 @@ export const Pagination: FC<IPagination> = (props) => {
             disabled: currentPage === 1,
           })}
           onClick={onPrevious}
-          role="presentation"
         >
           <div className="ui-pagination__arrow ui-pagination__arrow--left" />
         </li>
@@ -115,7 +113,6 @@ export const Pagination: FC<IPagination> = (props) => {
                 selected: pageNumber === currentPage,
               })}
               onClick={() => onPageChange(pageNumber as number)}
-              role="presentation"
             >
               {pageNumber}
             </li>
@@ -126,7 +123,6 @@ export const Pagination: FC<IPagination> = (props) => {
             disabled: currentPage === lastPage,
           })}
           onClick={onNext}
-          role="presentation"
         >
           <div className="ui-pagination__arrow ui-pagination__arrow--right" />
         </li>
@@ -135,7 +131,6 @@ export const Pagination: FC<IPagination> = (props) => {
             disabled: currentPage === lastPage,
           })}
           onClick={onToEnd}
-          role="presentation"
         >
           <div className="ui-pagination__arrow ui-pagination__arrow--double ui-pagination__arrow--right" />
         </li>

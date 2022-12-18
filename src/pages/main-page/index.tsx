@@ -16,7 +16,6 @@ export const MainPage = () => {
           isOpen && 'main-page__open-sidebar--show',
         )}
         onClick={handleArrowClick}
-        role="presentation"
       />
       <Sidebar hide={isOpen} onClose={setIsOpen} />
       <MainTable fullWidth={isOpen} />

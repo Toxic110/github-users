@@ -86,7 +86,6 @@ export const Select: FC<ISelect> = ({
       <div
         className={classNames('ui-label', extraSmall && 'ui-label--small')}
         onClick={handleSetVisible}
-        role="presentation"
       >
         {label}
       </div>
@@ -96,7 +95,6 @@ export const Select: FC<ISelect> = ({
           extraSmall && 'ui-input--small',
         )}
         onClick={handleSetVisible}
-        role="presentation"
       >
         {selectedLabel}
       </div>
@@ -127,7 +125,6 @@ export const Select: FC<ISelect> = ({
                   selectedValue === option.value ? 'ui-select__menu-item--active' : '',
                 )}
                 onClick={() => handleChangeValue(option.value, option.label)}
-                role="presentation"
               >
                 {option.label}
               </li>
