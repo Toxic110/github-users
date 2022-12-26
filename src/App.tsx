@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import { clientRouter } from './routes';
 
 function App() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <>
       <header className="app__header">

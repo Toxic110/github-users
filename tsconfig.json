@@ -21,7 +21,9 @@
       "@components": ["src/components"],
       "@pages": ["src/pages"],
       "@services": ["src/services"],
-      "@hooks": ["src/hooks"]
+      "@hooks": ["src/hooks"],
+      "@store": ["src/store"],
+      "@interface": ["src/interface"]
     }
   },
   "include": ["src"]
