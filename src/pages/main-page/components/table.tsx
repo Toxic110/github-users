@@ -1,266 +1,34 @@
+import { useAppSelector } from '@hooks';
 import { Table } from '@ui';
 import classNames from 'classnames';
 
-const tableHeaders = ['Items', 'Order #', 'Amount', 'Status', 'Delivery Driver'];
+const tableHeaders = ['Аватар', 'Логин', 'Тип', 'Ссылка'];
 
 const TableContent = () => {
+  const items = useAppSelector((state) => state.mainPage.users.items);
+
+  if (!items) {
+    return null;
+  }
+
   return (
     <tbody>
-      <tr>
-        <td>
-          <span>Large Detroit Style Pizza</span>
-        </td>
-        <td>
-          <span>3213456785</span>
-        </td>
-        <td>
-          <span>$31.43</span>
-        </td>
-        <td>
-          <span>Pending</span>
-        </td>
-        <td>
-          <span>Dave</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Double Decker Club With Fries. Pickles, extra side avacado</span>
-        </td>
-        <td>
-          <span>9874563245</span>
-        </td>
-        <td>
-          <span>$12.99</span>
-        </td>
-        <td>
-          <span>Delivered</span>
-        </td>
-        <td>
-          <span>Cathy</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Family Sized Lobster Dinner</span>
-        </td>
-        <td>
-          <span>3456781234</span>
-        </td>
-        <td>
-          <span>$320.00</span>
-        </td>
-        <td>
-          <span>In Progress</span>
-        </td>
-        <td>
-          <span>Alexander</span>
-        </td>
-      </tr>
+      {items.map((elem) => (
+        <tr key={elem.id}>
+          <td>
+            <img className="main-table__user-avatar" src={elem.avatar_url} alt="avatar" />
+          </td>
+          <td>
+            <span>{elem.login}</span>
+          </td>
+          <td>
+            <span>{elem.type}</span>
+          </td>
+          <td>
+            <span>{elem.url}</span>
+          </td>
+        </tr>
+      ))}
     </tbody>
   );
 };
@@ -270,9 +38,15 @@ interface IMainTable {
 }
 
 export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
+  const totalCount = useAppSelector((state) => state.mainPage.users.total_count);
+
   return (
     <div className={classNames('main-table', fullWidth && 'main-table--full-width')}>
-      <Table headers={tableHeaders} tableContent={<TableContent />} />
+      <Table
+        totalCount={totalCount}
+        headers={tableHeaders}
+        tableContent={<TableContent />}
+      />
     </div>
   );
 };

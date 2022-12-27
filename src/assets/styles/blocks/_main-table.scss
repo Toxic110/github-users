@@ -13,4 +13,9 @@
       width: calc(100% - 90px);
     }
   }
+
+  &__user-avatar {
+    width: 80px;
+    border-radius: 50%;
+  }
 }

@@ -1,5 +1,8 @@
+import { Loader } from '@components';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import classNames from 'classnames';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { fetchUsers } from 'src/store/slices/main-page-slice';
 
 import { Sidebar } from './components/sidebar';
 import { MainTable } from './components/table';
@@ -7,6 +10,12 @@ import { MainTable } from './components/table';
 export const MainPage = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleArrowClick = useCallback(() => setIsOpen((prev) => !prev), []);
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.mainPage.loading);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   return (
     <div className="main-page">
@@ -19,6 +28,7 @@ export const MainPage = () => {
       />
       <Sidebar hide={isOpen} onClose={setIsOpen} />
       <MainTable fullWidth={isOpen} />
+      {loading && <Loader />}
     </div>
   );
 };

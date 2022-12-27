@@ -3,9 +3,10 @@ import { useMemo, useState } from 'react';
 interface ITable {
   headers: string[];
   tableContent: React.ReactNode;
+  totalCount: number;
 }
 
-export const Table: React.FC<ITable> = ({ headers, tableContent }) => {
+export const Table: React.FC<ITable> = ({ headers, tableContent, totalCount }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const repeatCount = useMemo(() => headers.length, [headers]);
 
@@ -43,7 +44,7 @@ export const Table: React.FC<ITable> = ({ headers, tableContent }) => {
             <Pagination
               className="pagination-bar"
               currentPage={currentPage}
-              totalCount={100}
+              totalCount={totalCount}
               onPageChange={(page: number) => setCurrentPage(page)}
             />
           </div>

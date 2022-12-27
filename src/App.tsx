@@ -8,6 +8,7 @@ import { clientRouter } from './routes';
 
 function App() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <>
       <header className="app__header">
