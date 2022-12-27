@@ -1,6 +1,8 @@
-import { useAppSelector } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@hooks';
+import { fetchUsers } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
+import { useState } from 'react';
 
 const tableHeaders = ['Аватар', 'Логин', 'Тип', 'Ссылка'];
 
@@ -38,12 +40,21 @@ interface IMainTable {
 }
 
 export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
-  const totalCount = useAppSelector((state) => state.mainPage.users.total_count);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const dispatch = useAppDispatch();
+  const totalCount = useAppSelector((state) => state.mainPage.users.total_count) / 100000;
+
+  const handleChangePage = (page: number) => {
+    setCurrentPage(page);
+    dispatch(fetchUsers(page));
+  };
 
   return (
     <div className={classNames('main-table', fullWidth && 'main-table--full-width')}>
       <Table
         totalCount={totalCount}
+        currentPage={currentPage}
+        setCurrentPage={handleChangePage}
         headers={tableHeaders}
         tableContent={<TableContent />}
       />

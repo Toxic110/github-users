@@ -1,13 +1,20 @@
 import { Pagination } from '@ui';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 interface ITable {
   headers: string[];
   tableContent: React.ReactNode;
   totalCount: number;
+  currentPage: number;
+  setCurrentPage(page: number): void;
 }
 
-export const Table: React.FC<ITable> = ({ headers, tableContent, totalCount }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+export const Table: React.FC<ITable> = ({
+  headers,
+  tableContent,
+  totalCount,
+  currentPage,
+  setCurrentPage,
+}) => {
   const repeatCount = useMemo(() => headers.length, [headers]);
 
   return (

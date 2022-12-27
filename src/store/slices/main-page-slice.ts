@@ -3,15 +3,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { applicationService } from '@services';
 
-export const fetchUsers = createAsyncThunk('users/get-users', async function () {
-  try {
-    const response = await applicationService.getUsers();
+export const fetchUsers = createAsyncThunk(
+  'users/get-users',
+  async function (page?: number | undefined) {
+    try {
+      const response = await applicationService.getUsers(page);
 
-    return response;
-  } catch (error) {
-    throw new Error();
-  }
-});
+      return response;
+    } catch (error) {
+      throw new Error();
+    }
+  },
+);
 
 const mainPageSlice = createSlice({
   name: 'mainPage',
@@ -21,9 +24,14 @@ const mainPageSlice = createSlice({
       items: [] as IUser[],
       total_count: 0,
     },
+    currentPage: 0,
     error: false,
   },
-  reducers: {},
+  reducers: {
+    clearError(state) {
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
       state.loading = true;
@@ -38,5 +46,7 @@ const mainPageSlice = createSlice({
     });
   },
 });
+
+export const { clearError } = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;
