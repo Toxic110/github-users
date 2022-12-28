@@ -72,7 +72,7 @@ export const Select: FC<ISelect> = ({
     [selectedValue],
   );
 
-  const handleSetVisible = useCallback(() => setIsOpen(!isOpen), [isOpen]);
+  const handleSetVisible = () => setIsOpen(!isOpen);
 
   return (
     <div
