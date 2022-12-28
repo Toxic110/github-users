@@ -27,7 +27,14 @@ const TableContent = () => {
             <span>{elem.type}</span>
           </td>
           <td>
-            <span>{elem.url}</span>
+            <a
+              href={elem.html_url}
+              target="_blank"
+              referrerPolicy="no-referrer"
+              rel="noreferrer"
+            >
+              {elem.html_url}
+            </a>
           </td>
         </tr>
       ))}
@@ -35,18 +42,29 @@ const TableContent = () => {
   );
 };
 
+/** Интерфейс таблицы. */
 interface IMainTable {
+  /** Признак отображения на всю ширину. */
   fullWidth: boolean;
 }
 
 export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
-  const totalCount = useAppSelector((state) => state.mainPage.users.total_count) / 100000;
+  const totalCount = useAppSelector((state) =>
+    Math.ceil(state.mainPage.users.total_count / 1000000),
+  );
+  const items = useAppSelector((state) => state.mainPage.users.items);
 
   const handleChangePage = (page: number) => {
     setCurrentPage(page);
-    dispatch(fetchUsers(page));
+    dispatch(fetchUsers({ page }));
+  };
+
+  const handleChangePageSize = (pageSize: number) => {
+    setPageSize(pageSize);
+    dispatch(fetchUsers({ page: currentPage, pageSize }));
   };
 
   return (
@@ -55,8 +73,11 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
         totalCount={totalCount}
         currentPage={currentPage}
         setCurrentPage={handleChangePage}
+        pageSize={pageSize}
+        setPageSize={handleChangePageSize}
         headers={tableHeaders}
         tableContent={<TableContent />}
+        searchItems={items}
       />
     </div>
   );

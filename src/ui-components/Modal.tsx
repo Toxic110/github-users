@@ -2,10 +2,15 @@ import { Button } from '@ui';
 import { useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
+/** Интерфейс модального окна. */
 interface IModal {
+  /** Признак отображения модального окна. */
   isOpen: boolean;
+  /** Метод закрытия модального окна. */
   onClose(val: boolean): void;
+  /** Сообщение модального окна. */
   message: string;
+  /** Заголовок модального окна. */
   title: string;
 }
 

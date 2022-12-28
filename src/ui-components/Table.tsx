@@ -1,11 +1,25 @@
+import type { IUser } from '@interface';
 import { Pagination } from '@ui';
 import { useMemo } from 'react';
+
+/** Интерфейс таблицы. */
 interface ITable {
+  /** Заголовки таблицы. */
   headers: string[];
+  /** Контент таблицы. */
   tableContent: React.ReactNode;
+  /** Общее колличество. */
   totalCount: number;
+  /** Текущая страница. */
   currentPage: number;
+  /** Метод смены текущей страницы. */
   setCurrentPage(page: number): void;
+  /** Размер страницы. */
+  pageSize: number;
+  /** Метод изменения размера страницы. */
+  setPageSize(val: number): void;
+  /** Найденные пользователи. */
+  searchItems: IUser[];
 }
 
 export const Table: React.FC<ITable> = ({
@@ -14,6 +28,9 @@ export const Table: React.FC<ITable> = ({
   totalCount,
   currentPage,
   setCurrentPage,
+  pageSize,
+  setPageSize,
+  searchItems,
 }) => {
   const repeatCount = useMemo(() => headers.length, [headers]);
 
@@ -40,11 +57,11 @@ export const Table: React.FC<ITable> = ({
           <div className="ui-table-footer__info">
             <div className="ui-table-footer__col">
               <div className="ui-table-footer__text">Всего записей:&nbsp;</div>
-              <div className="ui-table-footer__count">0</div>
+              <div className="ui-table-footer__count">{totalCount}</div>
             </div>
             <div className="ui-table-footer__col">
               <div className="ui-table-footer__text">Найдено:&nbsp;</div>
-              <div className="ui-table-footer__count">0</div>
+              <div className="ui-table-footer__count">{searchItems.length}</div>
             </div>
           </div>
           <div className="ui-table-footer__pagination">
@@ -53,6 +70,8 @@ export const Table: React.FC<ITable> = ({
               currentPage={currentPage}
               totalCount={totalCount}
               onPageChange={(page: number) => setCurrentPage(page)}
+              pageSize={pageSize}
+              onPageSizeChange={setPageSize}
             />
           </div>
         </div>

@@ -5,9 +5,9 @@ import { applicationService } from '@services';
 
 export const fetchUsers = createAsyncThunk(
   'users/get-users',
-  async function (page?: number | undefined) {
+  async function ({ page, pageSize }: { page?: number; pageSize?: number }) {
     try {
-      const response = await applicationService.getUsers(page);
+      const response = await applicationService.getUsers(page, pageSize);
 
       return response;
     } catch (error) {
@@ -24,7 +24,6 @@ const mainPageSlice = createSlice({
       items: [] as IUser[],
       total_count: 0,
     },
-    currentPage: 0,
     error: false,
   },
   reducers: {

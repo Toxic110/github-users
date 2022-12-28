@@ -14,7 +14,7 @@ export const MainPage = () => {
   const loading = useAppSelector((state) => state.mainPage.loading);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchUsers({}));
   }, []);
 
   return (

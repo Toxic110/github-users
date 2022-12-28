@@ -11,9 +11,11 @@ export const applicationService = {
   /**
    * Получить список пользователей.
    */
-  getUsers: (page?: number): Promise<IUserResponse> =>
+  getUsers: (page?: number, pageSize?: number): Promise<IUserResponse> =>
     axios({
-      url: `${BASE_URL}/search/users?q=type:user&page=${page ?? 0}`,
+      url: `${BASE_URL}/search/users?q=type:user+repos:1000&page=${page ?? 1}&per_page=${
+        pageSize ?? 10
+      }`,
       method: 'GET',
     }).then((res) => res.data),
 };

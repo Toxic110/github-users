@@ -1,7 +1,7 @@
 import { DOTS, usePagination } from '@hooks';
 import { Select } from '@ui';
 import classnames from 'classnames';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 /** Пропсы пагинации. */
 interface IPagination {
@@ -15,6 +15,8 @@ interface IPagination {
   currentPage: number;
   /** Имя класса. */
   className: string;
+  pageSize: number;
+  onPageSizeChange(val: number): void;
 }
 
 const paginationCountOptions = [
@@ -37,8 +39,15 @@ const paginationCountOptions = [
 ];
 
 export const Pagination: FC<IPagination> = (props) => {
-  const [pageSize, setPageSize] = useState<number>(paginationCountOptions[0].value);
-  const { onPageChange, totalCount, siblingCount = 1, currentPage, className } = props;
+  const {
+    onPageChange,
+    totalCount,
+    siblingCount = 1,
+    currentPage,
+    className,
+    pageSize,
+    onPageSizeChange,
+  } = props;
 
   const paginationRange = usePagination({
     currentPage,
@@ -74,7 +83,7 @@ export const Pagination: FC<IPagination> = (props) => {
             name="pagination-count"
             options={paginationCountOptions}
             extraSmall
-            valueSetter={setPageSize}
+            valueSetter={onPageSizeChange}
             defaultValue={paginationCountOptions[0]}
             menuPosition="top"
           />

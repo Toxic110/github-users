@@ -7,8 +7,11 @@ const mokeOptions = [
   { label: 'val2', value: 2 },
 ];
 
+/** Интерфейс сайдбапа. */
 interface ISidebar {
+  /** Признак отображения сайдбара. */
   hide: boolean;
+  /** Метод скрытия сайдбара. */
   onClose(flag: boolean): void;
 }
 
