@@ -53,7 +53,7 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
   const totalCount = useAppSelector((state) =>
-    Math.ceil(state.mainPage.users.total_count / 1000000),
+    Math.ceil(state.mainPage.users.total_count / 100000),
   );
   const items = useAppSelector((state) => state.mainPage.users.items);
 

@@ -9,7 +9,7 @@ interface SelectOption {
   /** Выводимое значение для пользователя. */
   label: string;
   /** Значение опции. */
-  value: number;
+  value: number | string;
 }
 
 /** Пропсы селекта. */
@@ -23,11 +23,13 @@ interface ISelect {
   /** Признак приминения других стилей. */
   extraSmall?: boolean;
   /** Функция выбрасывающая значение наружу. */
-  valueSetter?: (val: number) => void;
+  valueSetter?: (val: number | string) => void;
   /** Дефолтное значение. */
   defaultValue?: SelectOption;
-  /** menuPosition. */
+  /** Позиция списка. */
   menuPosition?: MenuPosition;
+  /** Признак очистки селекта. */
+  clearSelect?: boolean;
 }
 
 export const Select: FC<ISelect> = ({
@@ -38,8 +40,11 @@ export const Select: FC<ISelect> = ({
   valueSetter,
   defaultValue,
   menuPosition = 'bottom',
+  clearSelect,
 }) => {
-  const [selectedValue, setSelectedValue] = useState<number>(defaultValue?.value || 0);
+  const [selectedValue, setSelectedValue] = useState<number | string>(
+    defaultValue?.value || '',
+  );
   const [selectedLabel, setSelectedLabel] = useState<string>(defaultValue?.label || '');
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -51,6 +56,13 @@ export const Select: FC<ISelect> = ({
     };
   }, [ref]);
 
+  useEffect(() => {
+    if (clearSelect) {
+      setSelectedValue('');
+      setSelectedLabel('');
+    }
+  }, [clearSelect]);
+
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -61,7 +73,7 @@ export const Select: FC<ISelect> = ({
   );
 
   const handleChangeValue = useCallback(
-    (value: number, label: string) => {
+    (value: number | string, label: string) => {
       setSelectedValue(value);
       setSelectedLabel(label);
       setIsOpen(false);
@@ -115,7 +127,7 @@ export const Select: FC<ISelect> = ({
         >
           <ul
             className="ui-select__menu"
-            style={{ overflowY: options.length > 6 ? 'scroll' : 'auto' }}
+            style={{ overflowY: options.length > 6 ? 'auto' : 'visible' }}
           >
             {options.map((option) => (
               <li

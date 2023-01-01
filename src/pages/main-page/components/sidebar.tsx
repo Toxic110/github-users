@@ -1,10 +1,28 @@
+import { useAppDispatch, useAppSelector } from '@hooks';
+import { fetchUsers, setFilters } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-const mokeOptions = [
-  { label: 'val1', value: 1 },
-  { label: 'val2', value: 2 },
+const locationOptions = [
+  { label: 'Russia', value: 'russia' },
+  { label: 'China', value: 'china' },
+  { label: 'Usa', value: 'usa' },
+  { label: 'London', value: 'london' },
+  { label: 'France', value: 'france' },
+  { label: 'Germany', value: 'germany' },
+  { label: 'Poland', value: 'poland' },
+  { label: 'Belarus', value: 'belarus' },
+  { label: 'Italy', value: 'italy' },
+  { label: 'Sweden', value: 'sweden' },
+];
+
+const languageOptions = [
+  { label: 'Javascript', value: 'javascript' },
+  { label: 'C', value: 'c' },
+  { label: 'Pyton', value: 'pyton' },
+  { label: 'Java', value: 'java' },
+  { label: 'PHP', value: 'php' },
 ];
 
 /** Интерфейс сайдбапа. */
@@ -16,29 +34,62 @@ interface ISidebar {
 }
 
 export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
+  const [hasClearSelect, setHasClearSelect] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.mainPage.filters);
   const handleClose = useCallback(() => onClose(true), [onClose]);
 
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const filters = Object.fromEntries([...formData]);
+
+    dispatch(setFilters(filters));
+  };
+
+  const handleClearFilter = () => {
+    setHasClearSelect(true);
+  };
+
+  useEffect(() => {
+    dispatch(fetchUsers({ filters }));
+  }, [filters]);
+
+  useEffect(() => {
+    if (hasClearSelect) {
+      setHasClearSelect(false);
+    }
+  }, [hasClearSelect]);
+
   return (
-    <div className={classNames('sidebar', hide && 'sidebar--hide')}>
+    <form
+      onSubmit={handleSubmit}
+      className={classNames('sidebar', hide && 'sidebar--hide')}
+    >
       <div className="sidebar-head">
         <div className="sidebar-head__title">Фильтры</div>
         <div className="sidebar-head__arrow" onClick={handleClose} />
       </div>
       <div className="sidebar-body">
         <div className="sidebar-body__row">
-          <Select name="status" label="Статус" options={mokeOptions} />
+          <Select
+            name="location"
+            label="Локация"
+            options={locationOptions}
+            clearSelect={hasClearSelect}
+          />
         </div>
         <div className="sidebar-body__row">
-          <Input name="code" label="Код" />
+          <Input name="repos" label="Количество репозиториев" type="number" />
         </div>
         <div className="sidebar-body__row">
-          <Input name="userName" label="Наименование" />
+          <Input name="login" label="Логин" />
         </div>
         <div className="sidebar-body__row">
-          <Select name="role" label="Тип роли" options={mokeOptions} />
+          <Select name="language" label="Язык" options={languageOptions} />
         </div>
         <div className="sidebar-body__row">
-          <Input name="description" label="Описание" />
+          <Input name="followers" label="Количество подписчиков" />
         </div>
       </div>
       <div className="sidebar-footer">
@@ -46,9 +97,11 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
           <Button variabel="primary">Применить</Button>
         </div>
         <div className="sidebar-footer__button">
-          <Button variabel="secondary">Сбросить</Button>
+          <Button variabel="secondary" type="reset" onClick={handleClearFilter}>
+            Сбросить
+          </Button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

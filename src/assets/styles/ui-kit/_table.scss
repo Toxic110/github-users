@@ -26,6 +26,7 @@
   th {
     position: sticky;
     top: 0;
+    max-height: 60px;
     font-size: 18px;
     border-bottom: 1px solid $color-grey;
     background: $color-white-light;

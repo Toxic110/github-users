@@ -33,6 +33,10 @@ export const Table: React.FC<ITable> = ({
   searchItems,
 }) => {
   const repeatCount = useMemo(() => headers.length, [headers]);
+  const repeatRows = useMemo(
+    () => (searchItems.length > pageSize ? pageSize : searchItems.length),
+    [pageSize, searchItems],
+  );
 
   return (
     <div className="ui-table__overflow">
@@ -40,7 +44,10 @@ export const Table: React.FC<ITable> = ({
         <table
           className="ui-table"
           data-repeat={headers.length}
-          style={{ gridTemplateColumns: `repeat(${repeatCount}, 1fr)` }}
+          style={{
+            gridTemplateColumns: `repeat(${repeatCount}, 1fr)`,
+            gridTemplateRows: `60px repeat(${repeatRows}, 120px)`,
+          }}
         >
           <thead>
             <tr>

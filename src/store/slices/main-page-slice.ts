@@ -1,13 +1,21 @@
-import type { IUser } from '@interface';
+import type { Filter, IUser } from '@interface';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { applicationService } from '@services';
 
 export const fetchUsers = createAsyncThunk(
   'users/get-users',
-  async function ({ page, pageSize }: { page?: number; pageSize?: number }) {
+  async function ({
+    page,
+    pageSize,
+    filters,
+  }: {
+    page?: number;
+    pageSize?: number;
+    filters?: Filter;
+  }) {
     try {
-      const response = await applicationService.getUsers(page, pageSize);
+      const response = await applicationService.getUsers(page, pageSize, filters);
 
       return response;
     } catch (error) {
@@ -25,10 +33,14 @@ const mainPageSlice = createSlice({
       total_count: 0,
     },
     error: false,
+    filters: {},
   },
   reducers: {
     clearError(state) {
       state.error = false;
+    },
+    setFilters(state, action) {
+      state.filters = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -46,6 +58,6 @@ const mainPageSlice = createSlice({
   },
 });
 
-export const { clearError } = mainPageSlice.actions;
+export const { clearError, setFilters } = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;

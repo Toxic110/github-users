@@ -1,8 +1,8 @@
 import { Loader } from '@components';
 import { useAppDispatch, useAppSelector } from '@hooks';
+import { fetchUsers } from '@store';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { fetchUsers } from 'src/store/slices/main-page-slice';
 
 import { Sidebar } from './components/sidebar';
 import { MainTable } from './components/table';

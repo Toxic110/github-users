@@ -15,8 +15,10 @@ interface IPagination {
   currentPage: number;
   /** Имя класса. */
   className: string;
+  /** Размер страницы. */
   pageSize: number;
-  onPageSizeChange(val: number): void;
+  /** Метод измненения размера страницы. */
+  onPageSizeChange(val: number | string): void;
 }
 
 const paginationCountOptions = [
