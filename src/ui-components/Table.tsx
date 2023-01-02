@@ -1,11 +1,12 @@
 import type { IUser } from '@interface';
 import { Pagination } from '@ui';
 import { useMemo } from 'react';
+import { ITableHeaders } from 'src/pages/main-page/components/table';
 
 /** Интерфейс таблицы. */
 interface ITable {
-  /** Заголовки таблицы. */
-  headers: string[];
+  // /** Заголовки таблицы. */
+  headers: ITableHeaders[];
   /** Контент таблицы. */
   tableContent: React.ReactNode;
   /** Общее колличество. */
@@ -25,6 +26,7 @@ interface ITable {
 export const Table: React.FC<ITable> = ({
   headers,
   tableContent,
+  // tableHead,
   totalCount,
   currentPage,
   setCurrentPage,
@@ -49,15 +51,6 @@ export const Table: React.FC<ITable> = ({
             gridTemplateRows: `60px repeat(${repeatRows}, 120px)`,
           }}
         >
-          <thead>
-            <tr>
-              {headers.map((elem) => (
-                <th key={elem}>
-                  <span>{elem}</span>
-                </th>
-              ))}
-            </tr>
-          </thead>
           {tableContent}
         </table>
         <div className="ui-table-footer">
