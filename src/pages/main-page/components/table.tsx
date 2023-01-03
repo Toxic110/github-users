@@ -3,6 +3,7 @@ import { fetchUsers } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /** Интерфейс таблицы. */
 interface IMainTable {
@@ -34,10 +35,11 @@ const tableHeaders = [
   { name: 'Аватар' },
   { name: 'Логин', sort: true },
   { name: 'Тип' },
-  { name: 'Ссылка', sort: true },
+  { name: 'Ссылка' },
 ];
 
 export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
@@ -47,9 +49,11 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   const items = useAppSelector((state) => state.mainPage.users.items);
   const [currentSort, setCurrentSort] = useState<string>('default');
 
-  const TableContent = () => {
-    const items = useAppSelector((state) => state.mainPage.users.items);
+  if (!items) {
+    return null;
+  }
 
+  const TableContent = () => {
     const sortTypes: ISortTypes = {
       up: {
         class: 'sort-up',
@@ -81,9 +85,9 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
       }
     };
 
-    if (!items) {
-      return null;
-    }
+    const handleRowClick = (id: number) => {
+      navigate(`/user/${id}`);
+    };
 
     return (
       <>
@@ -110,7 +114,7 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
 
         <tbody>
           {[...items].sort(sortTypes[currentSort as keyof ISortTypes].fn).map((elem) => (
-            <tr key={elem.id}>
+            <tr key={elem.id} onClick={() => handleRowClick(elem.id)}>
               <td>
                 <img
                   className="main-table__user-avatar"

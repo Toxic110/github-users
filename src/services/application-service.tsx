@@ -24,4 +24,12 @@ export const applicationService = {
       }in:login&page=${page ?? 1}&per_page=${pageSize ?? 10}`,
       method: 'GET',
     }).then((res) => res.data),
+
+  /**
+   * Получить данные пользователя.
+   */
+  getUser: (id: string) =>
+    axios({
+      url: `${BASE_URL}/user/${id}`,
+    }).then((res) => res.data),
 };

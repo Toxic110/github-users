@@ -19,3 +19,12 @@ export interface IUserResponse {
   /** Общее количество пользователей. */
   total_count: number;
 }
+
+export interface IUserFull extends IUser {
+  bio: string;
+  followers: number;
+  following: number;
+  location: string;
+  name: string;
+  company: string;
+}

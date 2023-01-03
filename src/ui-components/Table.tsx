@@ -26,7 +26,6 @@ interface ITable {
 export const Table: React.FC<ITable> = ({
   headers,
   tableContent,
-  // tableHead,
   totalCount,
   currentPage,
   setCurrentPage,

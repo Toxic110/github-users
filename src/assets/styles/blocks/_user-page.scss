@@ -1,0 +1,109 @@
+.user-page {
+  &__back {
+    font-size: 18px;
+    font-weight: 700px;
+    cursor: pointer;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px;
+  }
+
+  &__head {
+    padding: 20px;
+    background: $color-button-primary;
+  }
+
+  &__head-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: -110px;
+    padding-top: 100px;
+  }
+
+  &__avatar {
+    width: 208px;
+    padding: 10px;
+    background: $color-white;
+    border-radius: 4px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: $font-size-default;
+    font-weight: 700;
+    box-shadow: none;
+    text-decoration: none;
+    background: transparent;
+    color: $color-black;
+    border: 2px solid $color-black;
+    border-radius: 4px;
+    transition: $transition;
+
+    &:hover {
+      background: $color-button-primary-hover;
+    }
+
+    &:active {
+      background: $color-button-primary-active;
+    }
+  }
+
+  &__head-info-column {
+    & + & {
+      margin-left: 20px;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__location {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: flex-end;
+    padding: 50px;
+    background: $color-grey-light;
+  }
+
+  &__body-column {
+    & + & {
+      margin-left: 20px;
+    }
+  }
+
+  &__body-column-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__body-column-text {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  &__footer {
+    padding: 20px;
+    margin: 20px;
+    background: $color-grey-light;
+  }
+
+  &__footer-row {
+    & + & {
+      margin-top: 12px;
+    }
+  }
+}

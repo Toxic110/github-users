@@ -11,5 +11,6 @@ export const clientRouter = createBrowserRouter([
   {
     path: '/user/:id',
     element: <UserPage />,
+    errorElement: <NotFound />,
   },
 ]);

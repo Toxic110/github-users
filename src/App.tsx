@@ -28,7 +28,6 @@ function App() {
     <>
       <header className="app__header">
         <span>Github users</span>
-        <div onClick={() => setIsOpen(true)}>показать портал</div>
         <Modal
           isOpen={isOpen}
           onClose={handleCloseModal}
