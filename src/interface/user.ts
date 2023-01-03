@@ -20,11 +20,18 @@ export interface IUserResponse {
   total_count: number;
 }
 
+/** Расширенный интерфейс пользователя. */
 export interface IUserFull extends IUser {
+  /** Биография пользователя. */
   bio: string;
+  /** Число подписчиков пользователя. */
   followers: number;
+  /** Число подписок пользователя. */
   following: number;
+  /** Местонахождение пользователя. */
   location: string;
+  /** Имя пользователя. */
   name: string;
+  /** Компания пользователя. */
   company: string;
 }

@@ -154,7 +154,8 @@
       "^@services(.*)$": "<rootDir>/src/services/$1",
       "^@hooks(.*)$": "<rootDir>/src/hooks/$1",
       "^@store(.*)$": "<rootDir>/src/store/$1",
-      "^@interface(.*)$": "<rootDir>/src/interface/$1"
+      "^@interface(.*)$": "<rootDir>/src/interface/$1",
+      "^@constants(.*)$": "<rootDir>/src/constants/$1"
     },
     "moduleFileExtensions": [
       "web.js",

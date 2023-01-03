@@ -1,4 +1,5 @@
 import { Loader } from '@components';
+import { URLS } from '@constants';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { IUserFull } from '@interface';
 import { fetchUser } from '@store';
@@ -21,7 +22,7 @@ export const UserPage = () => {
   }, [id]);
 
   const handleBackClick = () => {
-    navigate('/');
+    navigate(URLS.HOME_PAGE);
   };
 
   if (!user) {
@@ -68,8 +69,8 @@ export const UserPage = () => {
       </div>
       <h2 className="user-page__subtitle">О пользователе</h2>
       <div className="user-page__footer">
-        <div className="user-page__footer-row">Немного о себе: {user.bio}</div>
-        <div className="user-page__footer-row">Компания: {user.company}</div>
+        <div className="user-page__footer-row">Немного о себе: {user.bio ?? '-'}</div>
+        <div className="user-page__footer-row">Компания: {user.company ?? '-'}</div>
       </div>
     </div>
   );

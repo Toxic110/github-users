@@ -1,3 +1,4 @@
+import { URLS } from '@constants';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { fetchUsers } from '@store';
 import { Table } from '@ui';
@@ -86,7 +87,7 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
     };
 
     const handleRowClick = (id: number) => {
-      navigate(`/user/${id}`);
+      navigate(URLS.USER_PAGE.replace(':id', String(id)));
     };
 
     return (
