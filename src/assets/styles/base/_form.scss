@@ -9,4 +9,9 @@ input {
       -webkit-text-fill-color: $color-black;
     }
   }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 }

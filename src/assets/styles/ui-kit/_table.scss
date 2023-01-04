@@ -34,6 +34,13 @@
     background: $color-white-light;
   }
 
+  td {
+    display: flex;
+    align-items: center;
+    transition: $transition;
+    cursor: pointer;
+  }
+
   th + th {
     border-left: 1px solid $color-grey;
   }
@@ -58,6 +65,12 @@
     &:last-child {
       td {
         border-bottom: 0;
+      }
+    }
+
+    &:hover {
+      td {
+        background: $color-white-light;
       }
     }
   }

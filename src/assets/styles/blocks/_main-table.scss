@@ -18,4 +18,26 @@
     width: 80px;
     border-radius: 50%;
   }
+
+  &__not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__link {
+    color: $color-button-primary;
+    transition: $transition;
+
+    &:hover {
+      color: $color-button-primary-hover;
+    }
+
+    &:active {
+      color: $color-button-primary-active;
+    }
+  }
 }

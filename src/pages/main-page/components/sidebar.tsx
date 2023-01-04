@@ -1,29 +1,9 @@
+import { OPTIONS } from '@constants';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { fetchUsers, setFilters } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
-
-const locationOptions = [
-  { label: 'Russia', value: 'russia' },
-  { label: 'China', value: 'china' },
-  { label: 'Usa', value: 'usa' },
-  { label: 'London', value: 'london' },
-  { label: 'France', value: 'france' },
-  { label: 'Germany', value: 'germany' },
-  { label: 'Poland', value: 'poland' },
-  { label: 'Belarus', value: 'belarus' },
-  { label: 'Italy', value: 'italy' },
-  { label: 'Sweden', value: 'sweden' },
-];
-
-const languageOptions = [
-  { label: 'Javascript', value: 'javascript' },
-  { label: 'C', value: 'c' },
-  { label: 'Pyton', value: 'pyton' },
-  { label: 'Java', value: 'java' },
-  { label: 'PHP', value: 'php' },
-];
 
 /** Интерфейс сайдбапа. */
 interface ISidebar {
@@ -75,7 +55,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
           <Select
             name="location"
             label="Локация"
-            options={locationOptions}
+            options={OPTIONS.locationOptions}
             clearSelect={hasClearSelect}
           />
         </div>
@@ -86,10 +66,15 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
           <Input name="login" label="Логин" />
         </div>
         <div className="sidebar-body__row">
-          <Select name="language" label="Язык" options={languageOptions} />
+          <Select
+            name="language"
+            label="Язык"
+            options={OPTIONS.languageOptions}
+            clearSelect={hasClearSelect}
+          />
         </div>
         <div className="sidebar-body__row">
-          <Input name="followers" label="Количество подписчиков" />
+          <Input name="followers" label="Количество подписчиков" type="number" />
         </div>
       </div>
       <div className="sidebar-footer">
