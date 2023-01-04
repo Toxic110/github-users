@@ -1,6 +1,9 @@
 import { ISortTypes } from '@interface';
 import { useState } from 'react';
 
+/**
+ * Пользовательский хук для сортировки.
+ */
 export const useSort = () => {
   const [currentSort, setCurrentSort] = useState<string>('default');
 

@@ -19,6 +19,9 @@ interface IPagination {
   currentPage: number;
 }
 
+/**
+ * Пользовательский хук для пагинации.
+ */
 export const usePagination = ({
   totalCount,
   pageSize,

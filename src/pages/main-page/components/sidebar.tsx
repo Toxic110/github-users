@@ -1,5 +1,5 @@
 import { OPTIONS } from '@constants';
-import { useAppDispatch } from '@hooks';
+import { useAppDispatch, useUpdateEffect } from '@hooks';
 import { fetchUsers, mainPageSelectors, setFilters } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
@@ -31,7 +31,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
     setHasClearSelect(true);
   };
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     dispatch(fetchUsers({ filters }));
   }, [filters]);
 
