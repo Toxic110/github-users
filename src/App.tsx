@@ -1,7 +1,7 @@
 import './assets/styles/app.scss';
 
-import { useAppDispatch, useAppSelector } from '@hooks';
-import { clearError } from '@store';
+import { useAppDispatch } from '@hooks';
+import { clearError, mainPageSelectors } from '@store';
 import { Modal } from '@ui';
 import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { clientRouter } from './routes';
 
 function App() {
   const dispatch = useAppDispatch();
-  const error = useAppSelector((state) => state.mainPage.error);
+  const error = mainPageSelectors.errorSelector();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {

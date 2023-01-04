@@ -1,6 +1,6 @@
 import { Loader } from '@components';
-import { useAppDispatch, useAppSelector } from '@hooks';
-import { fetchUsers } from '@store';
+import { useAppDispatch } from '@hooks';
+import { fetchUsers, mainPageSelectors } from '@store';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
@@ -11,7 +11,7 @@ export const MainPage = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleArrowClick = () => setIsOpen((prev) => !prev);
   const dispatch = useAppDispatch();
-  const loading = useAppSelector((state) => state.mainPage.loading);
+  const loading = mainPageSelectors.loadingSelector();
 
   useEffect(() => {
     dispatch(fetchUsers({}));

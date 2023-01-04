@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@hooks';
-import { fetchUsers } from '@store';
+import { useAppDispatch } from '@hooks';
+import { fetchUsers, mainPageSelectors } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -31,10 +31,8 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
-  const totalCount = useAppSelector((state) =>
-    Math.ceil(state.mainPage.users.total_count / 100000),
-  );
-  const items = useAppSelector((state) => state.mainPage.users.items);
+  const totalCount = mainPageSelectors.totalCountSelector();
+  const items = mainPageSelectors.usersSelector();
 
   if (!items) {
     return null;

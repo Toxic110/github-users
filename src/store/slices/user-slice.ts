@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { applicationService } from '@services';
 
 export const fetchUser = createAsyncThunk(
-  'users/get-users',
+  'user/get-user',
   async function ({ id }: { id: string }) {
     try {
       const response = await applicationService.getUser(id);

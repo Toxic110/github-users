@@ -1,8 +1,8 @@
 import { Loader } from '@components';
 import { URLS } from '@constants';
-import { useAppDispatch, useAppSelector } from '@hooks';
+import { useAppDispatch } from '@hooks';
 import { IUserFull } from '@interface';
-import { fetchUser } from '@store';
+import { fetchUser, userPageSelectors } from '@store';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -10,10 +10,8 @@ export const UserPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const user: IUserFull = useAppSelector(
-    (state) => state.userPage.user,
-  ) as unknown as IUserFull;
-  const loading = useAppSelector((state) => state.userPage.loading);
+  const user: IUserFull = userPageSelectors.user();
+  const loading = userPageSelectors.loading();
 
   useEffect(() => {
     if (id) {
