@@ -1,6 +1,7 @@
 import { useAppSelector } from '@hooks';
 
 export const userPageSelectors = {
-  user: () => useAppSelector((state) => state.userPage.user),
-  loading: () => useAppSelector((state) => state.userPage.loading),
+  userSelector: () => useAppSelector((state) => state.userPage.user),
+  loadingSelector: () => useAppSelector((state) => state.userPage.loading),
+  errorSelector: () => useAppSelector((state) => state.userPage.error),
 };

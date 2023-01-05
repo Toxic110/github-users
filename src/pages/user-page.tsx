@@ -10,8 +10,8 @@ export const UserPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const user: IUserFull = userPageSelectors.user();
-  const loading = userPageSelectors.loading();
+  const user: IUserFull = userPageSelectors.userSelector();
+  const loading = userPageSelectors.loadingSelector();
 
   useEffect(() => {
     if (id) {

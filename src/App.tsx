@@ -1,23 +1,26 @@
 import './assets/styles/app.scss';
 
+import { URLS } from '@constants';
 import { useAppDispatch } from '@hooks';
-import { clearError, mainPageSelectors } from '@store';
+import { clearError, mainPageSelectors, userPageSelectors } from '@store';
 import { Modal } from '@ui';
 import { useEffect, useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { clientRouter } from './routes';
+import { clientRouters } from './routes';
 
 function App() {
   const dispatch = useAppDispatch();
-  const error = mainPageSelectors.errorSelector();
+  const navigate = useNavigate();
+  const errorMainPage = mainPageSelectors.errorSelector();
+  const errorUserPage = userPageSelectors.errorSelector();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if (error) {
+    if (errorMainPage || errorUserPage) {
       setIsOpen(true);
     }
-  }, [error]);
+  }, [errorMainPage, errorUserPage]);
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -27,7 +30,9 @@ function App() {
   return (
     <>
       <header className="app__header">
-        <span>Github users</span>
+        <span className="app__header-title" onClick={() => navigate(URLS.HOME_PAGE)}>
+          Github users
+        </span>
         <Modal
           isOpen={isOpen}
           onClose={handleCloseModal}
@@ -35,9 +40,7 @@ function App() {
           message="Сервер временно не доступен, попробуйте позже"
         />
       </header>
-      <main>
-        <RouterProvider router={clientRouter} />
-      </main>
+      <main>{clientRouters()}</main>
     </>
   );
 }

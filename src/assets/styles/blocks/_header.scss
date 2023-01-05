@@ -9,4 +9,8 @@
     color: $color-white;
     background: $color-header;
   }
+
+  &__header-title {
+    cursor: pointer;
+  }
 }
