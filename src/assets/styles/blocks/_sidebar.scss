@@ -10,8 +10,8 @@
   transition: $transition;
 
   &--hide {
+    transform: translateX(-200%);
     width: 0;
-    padding: 0;
   }
 }
 
