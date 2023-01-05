@@ -10,6 +10,19 @@
 
   &__info {
     font-size: 30px;
-    margin-top: 20px;
+    margin: 20px 0;
+  }
+
+  &__link {
+    color: $color-button-primary;
+    transition: $transition;
+
+    &:hover {
+      color: $color-button-primary-hover;
+    }
+
+    &:active {
+      color: $color-button-primary-active;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { IUserFull } from '@interface';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { applicationService } from '@services';
@@ -19,7 +20,7 @@ const userSlice = createSlice({
   name: 'userPage',
   initialState: {
     loading: false,
-    user: null,
+    user: null as unknown as IUserFull,
     error: false,
   },
   reducers: {},
