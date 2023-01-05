@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { Button } from 'Ui';
+import { Button } from '@ui';
 
 test('should be primary class', () => {
   const { container } = render(<Button variabel="primary">its primary button</Button>);

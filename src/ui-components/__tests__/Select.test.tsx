@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Select } from 'Ui';
+import { Select } from '@ui';
 
 const mokeOptions = [
   { label: 'moke-value-1', value: 'value-1' },

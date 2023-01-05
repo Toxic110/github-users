@@ -52,6 +52,7 @@
     "react-redux": "^8.0.5",
     "react-refresh": "^0.11.0",
     "react-router-dom": "^6.4.5",
+    "react-test-renderer": "^18.2.0",
     "redux": "^4.2.0",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
@@ -100,6 +101,7 @@
   },
   "devDependencies": {
     "@redux-devtools/core": "^3.13.1",
+    "@types/react-test-renderer": "^18.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^8.0.0",
@@ -155,7 +157,8 @@
       "^@hooks(.*)$": "<rootDir>/src/hooks/$1",
       "^@store(.*)$": "<rootDir>/src/store/$1",
       "^@interface(.*)$": "<rootDir>/src/interface/$1",
-      "^@constants(.*)$": "<rootDir>/src/constants/$1"
+      "^@constants(.*)$": "<rootDir>/src/constants/$1",
+      "axios": "axios/dist/node/axios.cjs"
     },
     "moduleFileExtensions": [
       "web.js",

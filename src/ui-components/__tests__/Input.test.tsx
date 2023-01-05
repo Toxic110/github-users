@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Input } from 'Ui';
+import { Input } from '@ui';
 
 test('should be correct change value', () => {
   render(<Input name="test" label="select" />);
