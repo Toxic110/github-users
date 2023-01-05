@@ -11,7 +11,7 @@ export const applicationService = {
   /**
    * Получить список пользователей.
    */
-  getUsers: (
+  getUsersList: (
     page?: number,
     pageSize?: number,
     filters?: Filter,

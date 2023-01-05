@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { applicationService } from '@services';
 
-export const fetchUsers = createAsyncThunk(
+export const fetchUsersList = createAsyncThunk(
   'users/get-users',
   async function ({
     page,
@@ -15,7 +15,7 @@ export const fetchUsers = createAsyncThunk(
     filters?: Filter;
   }) {
     try {
-      const response = await applicationService.getUsers(page, pageSize, filters);
+      const response = await applicationService.getUsersList(page, pageSize, filters);
 
       return response;
     } catch (error) {
@@ -44,14 +44,14 @@ const mainPageSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchUsers.pending, (state) => {
+    builder.addCase(fetchUsersList.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+    builder.addCase(fetchUsersList.fulfilled, (state, action) => {
       state.loading = false;
       state.users = action.payload;
     });
-    builder.addCase(fetchUsers.rejected, (state) => {
+    builder.addCase(fetchUsersList.rejected, (state) => {
       state.loading = false;
       state.error = true;
     });

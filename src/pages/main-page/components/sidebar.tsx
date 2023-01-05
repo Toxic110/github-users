@@ -1,6 +1,6 @@
 import { OPTIONS } from '@constants';
 import { useAppDispatch, useUpdateEffect } from '@hooks';
-import { fetchUsers, mainPageSelectors, setFilters } from '@store';
+import { fetchUsersList, mainPageSelectors, setFilters } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
@@ -32,7 +32,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
   };
 
   useUpdateEffect(() => {
-    dispatch(fetchUsers({ filters }));
+    dispatch(fetchUsersList({ filters }));
   }, [filters]);
 
   useEffect(() => {

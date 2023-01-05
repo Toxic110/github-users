@@ -1,6 +1,6 @@
 import { Loader } from '@components';
 import { useAppDispatch } from '@hooks';
-import { fetchUsers, mainPageSelectors } from '@store';
+import { fetchUsersList, mainPageSelectors } from '@store';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
@@ -14,7 +14,7 @@ export const MainPage = () => {
   const loading = mainPageSelectors.loadingSelector();
 
   useEffect(() => {
-    dispatch(fetchUsers({}));
+    dispatch(fetchUsersList({}));
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@hooks';
-import { fetchUsers, mainPageSelectors } from '@store';
+import { fetchUsersList, mainPageSelectors } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -40,12 +40,12 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
 
   const handleChangePage = (page: number) => {
     setCurrentPage(page);
-    dispatch(fetchUsers({ page }));
+    dispatch(fetchUsersList({ page }));
   };
 
   const handleChangePageSize = (pageSize: number) => {
     setPageSize(pageSize);
-    dispatch(fetchUsers({ page: currentPage, pageSize }));
+    dispatch(fetchUsersList({ page: currentPage, pageSize }));
   };
 
   return (
