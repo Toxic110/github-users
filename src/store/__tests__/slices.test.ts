@@ -1,7 +1,10 @@
-import { fetchUser, fetchUsersList } from '@store';
-
-import { mainPageActions, mainPageReducer } from '../slices/main-page-slice';
-import { userPageReducer } from '../slices/user-page-slice';
+import {
+  fetchUser,
+  fetchUsersList,
+  mainPageActions,
+  mainPageReducer,
+  userPageReducer,
+} from '@store';
 
 const mainPageInitialState = {
   error: false,

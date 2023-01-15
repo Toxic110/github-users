@@ -1,7 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import { mainPageReducer } from './slices/main-page-slice';
-import { userPageReducer } from './slices/user-page-slice';
+import { mainPageReducer, userPageReducer } from '@store';
 
 export const store = configureStore({
   reducer: {
