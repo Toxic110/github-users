@@ -1,6 +1,6 @@
 import { Loader } from '@components';
 import { URLS } from '@constants';
-import { useAppDispatch } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import { IUserFull } from '@interface';
 import { fetchUser, userPageSelectors } from '@store';
 import { useEffect } from 'react';
@@ -10,8 +10,8 @@ export const UserPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const user: IUserFull = userPageSelectors.userSelector();
-  const loading = userPageSelectors.loadingSelector();
+  const user: IUserFull = useAppSelector(userPageSelectors.userSelector);
+  const loading = useAppSelector(userPageSelectors.loadingSelector);
 
   useEffect(() => {
     if (id) {

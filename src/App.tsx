@@ -1,8 +1,13 @@
 import './assets/styles/app.scss';
 
 import { URLS } from '@constants';
-import { useAppDispatch } from '@hooks';
-import { clearError, mainPageSelectors, userPageSelectors } from '@store';
+import { useAppDispatch, useAppSelector } from '@hooks';
+import {
+  mainPageActions,
+  mainPageSelectors,
+  userPageActions,
+  userPageSelectors,
+} from '@store';
 import { Modal } from '@ui';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,8 +17,8 @@ import { clientRouters } from './routes';
 function App() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const errorMainPage = mainPageSelectors.errorSelector();
-  const errorUserPage = userPageSelectors.errorSelector();
+  const errorMainPage = useAppSelector(mainPageSelectors.errorSelector);
+  const errorUserPage = useAppSelector(userPageSelectors.errorSelector);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -24,7 +29,8 @@ function App() {
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    dispatch(clearError());
+    dispatch(mainPageActions.clearError());
+    dispatch(userPageActions.clearError());
   };
 
   return (

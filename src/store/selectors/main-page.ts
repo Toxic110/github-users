@@ -1,10 +1,10 @@
-import { useAppSelector } from '@hooks';
+import { IStore } from '@interface';
 
 export const mainPageSelectors = {
-  usersSelector: () => useAppSelector((state) => state.mainPage.users.items),
-  filtersSelector: () => useAppSelector((state) => state.mainPage.filters),
-  errorSelector: () => useAppSelector((state) => state.mainPage.error),
-  loadingSelector: () => useAppSelector((state) => state.mainPage.loading),
-  totalCountSelector: () =>
-    useAppSelector((state) => Math.ceil(state.mainPage.users.total_count / 100000)),
+  usersSelector: (state: IStore) => state.mainPageReducer.users.items,
+  filtersSelector: (state: IStore) => state.mainPageReducer.filters,
+  errorSelector: (state: IStore) => state.mainPageReducer.error,
+  loadingSelector: (state: IStore) => state.mainPageReducer.loading,
+  totalCountSelector: (state: IStore) =>
+    Math.ceil(state.mainPageReducer.users.total_count / 100000),
 };

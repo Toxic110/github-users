@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import { fetchUsersList, mainPageSelectors } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
@@ -31,8 +31,8 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
-  const totalCount = mainPageSelectors.totalCountSelector();
-  const items = mainPageSelectors.usersSelector();
+  const totalCount = useAppSelector(mainPageSelectors.totalCountSelector);
+  const items = useAppSelector(mainPageSelectors.usersSelector);
 
   if (!items) {
     return null;

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import mainPage from './slices/main-page-slice';
-import userPage from './slices/user-slice';
+import { mainPageReducer } from './slices/main-page-slice';
+import { userPageReducer } from './slices/user-page-slice';
 
 export const store = configureStore({
   reducer: {
-    mainPage,
-    userPage,
+    mainPageReducer,
+    userPageReducer,
   },
 });
 

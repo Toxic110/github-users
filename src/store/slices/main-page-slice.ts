@@ -58,6 +58,4 @@ const mainPageSlice = createSlice({
   },
 });
 
-export const { clearError, setFilters } = mainPageSlice.actions;
-
-export default mainPageSlice.reducer;
+export const { reducer: mainPageReducer, actions: mainPageActions } = mainPageSlice;

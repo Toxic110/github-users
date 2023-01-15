@@ -1,6 +1,6 @@
 import { OPTIONS } from '@constants';
-import { useAppDispatch, useUpdateEffect } from '@hooks';
-import { fetchUsersList, mainPageSelectors, setFilters } from '@store';
+import { useAppDispatch, useAppSelector, useUpdateEffect } from '@hooks';
+import { fetchUsersList, mainPageActions, mainPageSelectors } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ interface ISidebar {
 export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
   const [hasClearSelect, setHasClearSelect] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const filters = mainPageSelectors.filtersSelector();
+  const filters = useAppSelector(mainPageSelectors.filtersSelector);
   const handleClose = useCallback(() => onClose(true), [onClose]);
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -24,7 +24,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
     const formData = new FormData(e.currentTarget);
     const filters = Object.fromEntries([...formData]);
 
-    dispatch(setFilters(filters));
+    dispatch(mainPageActions.setFilters(filters));
   };
 
   const handleClearFilter = () => {

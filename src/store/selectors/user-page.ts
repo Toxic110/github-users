@@ -1,7 +1,7 @@
-import { useAppSelector } from '@hooks';
+import { IStore } from '@interface';
 
 export const userPageSelectors = {
-  userSelector: () => useAppSelector((state) => state.userPage.user),
-  loadingSelector: () => useAppSelector((state) => state.userPage.loading),
-  errorSelector: () => useAppSelector((state) => state.userPage.error),
+  userSelector: (state: IStore) => state.userPageReducer.user,
+  loadingSelector: (state: IStore) => state.userPageReducer.loading,
+  errorSelector: (state: IStore) => state.userPageReducer.error,
 };

@@ -23,7 +23,11 @@ const userSlice = createSlice({
     user: null as unknown as IUserFull,
     error: false,
   },
-  reducers: {},
+  reducers: {
+    clearError(state) {
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state) => {
       state.loading = true;
@@ -39,4 +43,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
+export const { reducer: userPageReducer, actions: userPageActions } = userSlice;
