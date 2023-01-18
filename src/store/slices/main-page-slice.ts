@@ -19,7 +19,10 @@ export const fetchUsersList = createAsyncThunk(
 
       return response;
     } catch (error) {
-      throw new Error();
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw new Error('Что-то пошло не так!');
     }
   },
 );
@@ -32,12 +35,12 @@ const mainPageSlice = createSlice({
       items: [] as IUser[],
       total_count: 0,
     },
-    error: false,
+    error: '',
     filters: {},
   },
   reducers: {
     clearError(state) {
-      state.error = false;
+      state.error = '';
     },
     setFilters(state, action) {
       state.filters = action.payload;
@@ -51,9 +54,9 @@ const mainPageSlice = createSlice({
       state.loading = false;
       state.users = action.payload;
     });
-    builder.addCase(fetchUsersList.rejected, (state) => {
+    builder.addCase(fetchUsersList.rejected, (state, action) => {
       state.loading = false;
-      state.error = true;
+      state.error = action?.error?.message as string;
     });
   },
 });

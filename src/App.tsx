@@ -43,7 +43,8 @@ function App() {
           isOpen={isOpen}
           onClose={handleCloseModal}
           title="Ошибка!"
-          message="Сервис временно не доступен, попробуйте позже"
+          // message="Сервис временно не доступен, попробуйте позже"
+          message={errorUserPage || errorMainPage}
         />
       </header>
       <main>{clientRouters()}</main>

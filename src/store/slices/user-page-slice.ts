@@ -11,7 +11,10 @@ export const fetchUser = createAsyncThunk(
 
       return response;
     } catch (error) {
-      throw new Error();
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw new Error('Что-то пошло не так!');
     }
   },
 );
@@ -21,11 +24,14 @@ const userSlice = createSlice({
   initialState: {
     loading: false,
     user: null as unknown as IUserFull,
-    error: false,
+    error: '',
   },
   reducers: {
     clearError(state) {
-      state.error = false;
+      state.error = '';
+    },
+    setError(state, action) {
+      state.error = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -36,9 +42,10 @@ const userSlice = createSlice({
       state.loading = false;
       state.user = action.payload;
     });
-    builder.addCase(fetchUser.rejected, (state) => {
+    builder.addCase(fetchUser.rejected, (state, action) => {
+      console.log(action);
       state.loading = false;
-      state.error = true;
+      state.error = action?.error?.message as string;
     });
   },
 });

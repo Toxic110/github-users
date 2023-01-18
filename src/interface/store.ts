@@ -14,7 +14,7 @@ export interface IStore {
       total_count: number;
     };
     /** Признак ошибки. */
-    error: boolean;
+    error: string;
     /** Фильтры. */
     filters: Filter;
   };
@@ -25,6 +25,6 @@ export interface IStore {
     /** Пользователь. */
     user: IUserFull;
     /** Признак ошибки. */
-    error: boolean;
+    error: string;
   };
 }
