@@ -7,7 +7,7 @@ import {
 } from '@store';
 
 const mainPageInitialState = {
-  error: false,
+  error: '',
   filters: {},
   loading: false,
   users: { items: [], total_count: 0 },
@@ -16,7 +16,7 @@ const mainPageInitialState = {
 const userPageInitialState = {
   loading: false,
   user: null,
-  error: false,
+  error: '',
 };
 
 describe('main page slice', () => {

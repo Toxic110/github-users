@@ -15,7 +15,7 @@ const mokeStore = {
       ],
       total_count: 0,
     },
-    error: false,
+    error: '',
     filters: {
       location: 'china',
       repos: '1',
@@ -39,7 +39,7 @@ const mokeStore = {
       company: 'asd',
     },
     loading: false,
-    error: false,
+    error: '',
   },
 };
 
