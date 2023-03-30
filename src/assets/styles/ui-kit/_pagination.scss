@@ -91,8 +91,9 @@
       pointer-events: none;
     }
 
-    @include mediaToDown($container-mobile) {
-      padding: 0 8px;
+    @include mediaToDown($container-tablet) {
+      padding: 0 6px;
+      min-width: 24px;
     }
   }
 }

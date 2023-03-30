@@ -1,4 +1,4 @@
-import type { Filter, IUserResponse } from '@interface';
+import type { Filter, IUserFull, IUserResponse } from '@interface';
 import type { AxiosError } from 'axios';
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ export const applicationService = {
   /**
    * Получить данные пользователя.
    */
-  getUser: (id: string) =>
+  getUser: (id: string): Promise<IUserFull> =>
     axios({
       url: `${BASE_URL}/user/${id}`,
     })

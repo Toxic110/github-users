@@ -5,6 +5,10 @@
   overflow: auto;
 
   @include mediaToDown($container-tablet) {
+    height: calc(100% - 120px);
+  }
+
+  @include mediaToDown($container-mobile) {
     height: calc(100% - 135px);
   }
 
