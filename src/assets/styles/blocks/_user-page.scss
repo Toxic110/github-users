@@ -21,6 +21,10 @@
     align-items: center;
     margin-bottom: -110px;
     padding-top: 100px;
+
+    @include mediaToDown($container-mobile) {
+      align-items: flex-start;
+    }
   }
 
   &__avatar {
@@ -46,6 +50,11 @@
     border: 2px solid $color-black;
     border-radius: 4px;
     transition: $transition;
+
+    @include mediaToDown($container-mobile) {
+      width: calc(100% + 100px);
+      padding: 8px 10px;
+    }
 
     &:hover {
       background: $color-button-primary-hover;
@@ -77,11 +86,22 @@
     justify-content: flex-end;
     padding: 50px;
     background: $color-grey-light;
+
+    @include mediaToDown($container-mobile) {
+      flex-direction: column;
+      padding: 20px;
+      padding-top: 110px;
+    }
   }
 
   &__body-column {
     & + & {
       margin-left: 20px;
+
+      @include mediaToDown($container-mobile) {
+        margin-left: 0;
+        margin-top: 20px;
+      }
     }
   }
 

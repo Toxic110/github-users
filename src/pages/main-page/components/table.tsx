@@ -6,12 +6,6 @@ import { useState } from 'react';
 
 import { TableContent } from './table-content';
 
-/** Интерфейс таблицы. */
-interface IMainTable {
-  /** Признак отображения на всю ширину. */
-  fullWidth: boolean;
-}
-
 /** Интерфейс заголовков таблицы. */
 export interface ITableHeaders {
   /** Заголовок. */
@@ -27,12 +21,13 @@ const tableHeaders = [
   { title: 'Ссылка' },
 ];
 
-export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
+export const MainTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
   const totalCount = useAppSelector(mainPageSelectors.totalCountSelector);
   const items = useAppSelector(mainPageSelectors.usersSelector);
+  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
 
   if (!items) {
     return null;
@@ -49,7 +44,7 @@ export const MainTable: React.FC<IMainTable> = ({ fullWidth }) => {
   };
 
   return (
-    <div className={classNames('main-table', fullWidth && 'main-table--full-width')}>
+    <div className={classNames('main-table', isShowSidebar && 'main-table--full-width')}>
       {items.length === 0 ? (
         <div className="main-table__not-found">Пользователи не нашлись</div>
       ) : (

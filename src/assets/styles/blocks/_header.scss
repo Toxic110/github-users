@@ -2,6 +2,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 60px;
     padding: 20px;
     font-size: 22px;
@@ -12,5 +13,23 @@
 
   &__header-title {
     cursor: pointer;
+  }
+
+  &__header-sidebar-btn {
+    display: none;
+    width: 30px;
+    height: 30px;
+    background: url('../../images/sidebar-arrow.svg') no-repeat center center/80%,
+      $color-white;
+    transform: scale(1);
+    transition: $transition;
+
+    @include mediaToDown($container-mobile) {
+      display: block;
+    }
+
+    &--open {
+      transform: scale(-1);
+    }
   }
 }

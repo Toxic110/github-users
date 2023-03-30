@@ -18,12 +18,17 @@ export const applicationService = {
     filters?: Filter,
   ): Promise<IUserResponse> =>
     axios({
-      url: `${BASE_URL}/search/users?q=type:user+repos:${filters?.repos || 1}+location:${
-        filters?.location ?? ''
-      }+language:${filters?.language ?? ''}+followers:>=${filters?.followers || 0}+${
-        filters?.login ?? ''
-      }in:login&page=${page ?? 1}&per_page=${pageSize ?? 10}`,
+      url: `${BASE_URL}/search/users`,
       method: 'GET',
+      params: {
+        q: `type:user+repos:${filters?.repos || 1}+location:${
+          filters?.location ?? ''
+        }+language:${filters?.language ?? ''}+followers:>=${filters?.followers || 0}+${
+          filters?.login ?? ''
+        }in:login`,
+        page: page ?? 1,
+        per_page: pageSize ?? 10,
+      },
     })
       .then((res) => res.data)
       .catch(() => {

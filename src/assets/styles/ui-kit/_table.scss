@@ -1,20 +1,26 @@
 .ui-table {
   width: 100%;
-  min-width: 1000px;
   height: calc(100% - 76px);
   display: grid;
   overflow: auto;
 
+  @include mediaToDown($container-tablet) {
+    height: calc(100% - 135px);
+  }
+
   &__overflow {
     height: calc(100vh - 170px);
     overflow: hidden;
+
+    @include mediaToDown($container-mobile) {
+      height: calc(100vh - 60px);
+    }
   }
 
   &__wrapper {
     height: 100%;
     border: 1px solid $color-grey;
     background: $color-white;
-    overflow: auto;
   }
 
   thead,
@@ -39,6 +45,12 @@
     align-items: center;
     transition: $transition;
     cursor: pointer;
+
+    a {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
   th + th {
@@ -49,7 +61,7 @@
   td {
     text-align: left;
     padding: 16px 20px;
-    min-width: 100px;
+    min-width: 200px;
   }
 
   th span,
@@ -100,15 +112,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 1000px;
   padding: 20px;
   border-top: 1px solid $color-grey;
   background: $color-white;
   white-space: nowrap;
 
+  @include mediaToDown($container-tablet) {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  @include mediaToDown($container-mobile) {
+    padding: 10px;
+  }
+
   &__info {
     display: flex;
     margin-right: 20px;
+
+    @include mediaToDown($container-tablet) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   &__col {

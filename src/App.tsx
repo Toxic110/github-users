@@ -1,7 +1,7 @@
 import './assets/styles/app.scss';
 
 import { URLS } from '@constants';
-import { useAppDispatch, useAppSelector } from '@hooks';
+import { useAppDispatch, useAppSelector, useResize } from '@hooks';
 import {
   mainPageActions,
   mainPageSelectors,
@@ -9,6 +9,7 @@ import {
   userPageSelectors,
 } from '@store';
 import { Modal } from '@ui';
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,12 +21,23 @@ function App() {
   const errorMainPage = useAppSelector(mainPageSelectors.errorSelector);
   const errorUserPage = useAppSelector(userPageSelectors.errorSelector);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
+  const handleArrowClick = () => dispatch(mainPageActions.setHideSidebar(!isShowSidebar));
+  const { isScreenSm } = useResize();
 
   useEffect(() => {
     if (errorMainPage || errorUserPage) {
       setIsOpen(true);
     }
   }, [errorMainPage, errorUserPage]);
+
+  useEffect(() => {
+    if (isScreenSm) {
+      dispatch(mainPageActions.setHideSidebar(true));
+    } else {
+      dispatch(mainPageActions.setHideSidebar(false));
+    }
+  }, [isScreenSm]);
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -36,6 +48,15 @@ function App() {
   return (
     <>
       <header className="app__header">
+        {!window.location.href.includes('user') && (
+          <div
+            className={classNames(
+              'app__header-sidebar-btn',
+              isShowSidebar && 'app__header-sidebar-btn--open',
+            )}
+            onClick={handleArrowClick}
+          ></div>
+        )}
         <span className="app__header-title" onClick={() => navigate(URLS.HOME_PAGE)}>
           Github users
         </span>
@@ -43,7 +64,6 @@ function App() {
           isOpen={isOpen}
           onClose={handleCloseModal}
           title="Ошибка!"
-          // message="Сервис временно не доступен, попробуйте позже"
           message={errorUserPage || errorMainPage}
         />
       </header>

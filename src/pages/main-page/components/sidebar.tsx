@@ -1,23 +1,17 @@
 import { OPTIONS } from '@constants';
-import { useAppDispatch, useAppSelector, useUpdateEffect } from '@hooks';
+import { useAppDispatch, useAppSelector, useResize, useUpdateEffect } from '@hooks';
 import { fetchUsersList, mainPageActions, mainPageSelectors } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-/** Интерфейс сайдбапа. */
-interface ISidebar {
-  /** Признак отображения сайдбара. */
-  hide: boolean;
-  /** Метод скрытия сайдбара. */
-  onClose(flag: boolean): void;
-}
-
-export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
+export const Sidebar: React.FC = () => {
   const [hasClearSelect, setHasClearSelect] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const filters = useAppSelector(mainPageSelectors.filtersSelector);
-  const handleClose = useCallback(() => onClose(true), [onClose]);
+  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
+  const handleClose = () => dispatch(mainPageActions.setHideSidebar(true));
+  const { isScreenSm } = useResize();
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +19,10 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
     const filters = Object.fromEntries([...formData]);
 
     dispatch(mainPageActions.setFilters(filters));
+
+    if (isScreenSm) {
+      handleClose();
+    }
   };
 
   const handleClearFilter = () => {
@@ -44,7 +42,7 @@ export const Sidebar: React.FC<ISidebar> = ({ hide, onClose }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={classNames('sidebar', hide && 'sidebar--hide')}
+      className={classNames('sidebar', isShowSidebar && 'sidebar--hide')}
     >
       <div className="sidebar-head">
         <div className="sidebar-head__title">Фильтры</div>

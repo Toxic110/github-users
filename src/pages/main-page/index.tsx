@@ -1,16 +1,16 @@
 import { Loader } from '@components';
 import { useAppDispatch, useAppSelector } from '@hooks';
-import { fetchUsersList, mainPageSelectors } from '@store';
+import { fetchUsersList, mainPageActions, mainPageSelectors } from '@store';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { Sidebar } from './components/sidebar';
 import { MainTable } from './components/table';
 
 export const MainPage = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleArrowClick = () => setIsOpen((prev) => !prev);
+  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
   const dispatch = useAppDispatch();
+  const handleArrowClick = () => dispatch(mainPageActions.setHideSidebar(!isShowSidebar));
   const loading = useAppSelector(mainPageSelectors.loadingSelector);
 
   useEffect(() => {
@@ -22,12 +22,12 @@ export const MainPage = () => {
       <div
         className={classNames(
           'main-page__open-sidebar',
-          isOpen && 'main-page__open-sidebar--show',
+          isShowSidebar && 'main-page__open-sidebar--show',
         )}
         onClick={handleArrowClick}
       />
-      <Sidebar hide={isOpen} onClose={setIsOpen} />
-      <MainTable fullWidth={isOpen} />
+      <Sidebar />
+      <MainTable />
       {loading && <Loader />}
     </div>
   );

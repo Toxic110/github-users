@@ -6,11 +6,21 @@
   border-radius: $radius;
   background: $color-white;
 
+  @include mediaToDown($container-mobile) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
   &--full-width {
     width: calc(100% - 60px);
 
     @include mediaToDown($container-tablet) {
-      width: calc(100% - 90px);
+      width: calc(100% - 135px);
+    }
+    @include mediaToDown($container-mobile) {
+      width: 100%;
     }
   }
 

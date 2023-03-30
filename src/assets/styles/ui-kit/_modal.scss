@@ -6,6 +6,7 @@
   height: 100%;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
 
   &__content {
     position: absolute;
@@ -19,6 +20,10 @@
     border-radius: $radius;
     background: $color-white;
     transform: translate(-50%, -50%);
+
+    @include mediaToDown($container-mobile) {
+      width: calc(100% - 20px);
+    }
   }
 
   &__title {

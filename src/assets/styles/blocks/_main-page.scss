@@ -13,6 +13,10 @@
 
     &--show {
       width: 30px;
+
+      @include mediaToDown($container-mobile) {
+        width: 0;
+      }
     }
   }
 }

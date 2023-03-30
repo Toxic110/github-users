@@ -44,7 +44,7 @@ export const Pagination: FC<IPagination> = (props) => {
   const {
     onPageChange,
     totalCount,
-    siblingCount = 1,
+    siblingCount = 0,
     currentPage,
     className,
     pageSize,

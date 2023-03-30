@@ -6,11 +6,16 @@
   height: calc(100vh - 60px);
   padding: 20px;
   background: $color-white;
-  overflow: auto;
   transition: $transition;
 
+  @include mediaToDown($container-mobile) {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
   &--hide {
-    transform: translateX(-200%);
+    transform: translateX(-1000%);
     width: 0;
   }
 }
@@ -26,11 +31,18 @@
     background: url('../../images/sidebar-arrow.svg') no-repeat center center/cover;
     cursor: pointer;
     transition: $transition;
+
+    @include mediaToDown($container-mobile) {
+      display: none;
+    }
   }
 }
 
 .sidebar-body {
   margin: 25px 0;
+  margin-right: -16px;
+  padding-right: 16px;
+  overflow: auto;
 
   &__row {
     & + & {

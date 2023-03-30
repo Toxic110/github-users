@@ -7,4 +7,5 @@ export const mainPageSelectors = {
   loadingSelector: (state: IStore) => state.mainPageReducer.loading,
   totalCountSelector: (state: IStore) =>
     Math.ceil(state.mainPageReducer.users.total_count / 100000),
+  isShowSidebar: (state: IStore) => state.mainPageReducer.isShowSidebar,
 };

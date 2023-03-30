@@ -17,6 +17,8 @@ export interface IStore {
     error: string;
     /** Фильтры. */
     filters: Filter;
+    /** Признак скрывать или отображать сайдбар. */
+    isShowSidebar: boolean;
   };
   /** Страница пользователя. */
   userPageReducer: {

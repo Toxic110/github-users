@@ -37,6 +37,7 @@ const mainPageSlice = createSlice({
     },
     error: '',
     filters: {},
+    isShowSidebar: false,
   },
   reducers: {
     clearError(state) {
@@ -44,6 +45,9 @@ const mainPageSlice = createSlice({
     },
     setFilters(state, action) {
       state.filters = action.payload;
+    },
+    setHideSidebar(state, action) {
+      state.isShowSidebar = action.payload;
     },
   },
   extraReducers: (builder) => {
