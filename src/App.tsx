@@ -2,12 +2,7 @@ import './assets/styles/app.scss';
 
 import { URLS } from '@constants';
 import { useAppDispatch, useAppSelector, useResize } from '@hooks';
-import {
-  mainPageActions,
-  mainPageSelectors,
-  userPageActions,
-  userPageSelectors,
-} from '@store';
+import { usersActions, usersSelectors } from '@store';
 import { Modal } from '@ui';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
@@ -18,31 +13,29 @@ import { clientRouters } from './routes';
 function App() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const errorMainPage = useAppSelector(mainPageSelectors.errorSelector);
-  const errorUserPage = useAppSelector(userPageSelectors.errorSelector);
+  const error = useAppSelector(usersSelectors.errorSelector);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
-  const handleArrowClick = () => dispatch(mainPageActions.setHideSidebar(!isShowSidebar));
+  const isShowSidebar = useAppSelector(usersSelectors.isShowSidebar);
+  const handleArrowClick = () => dispatch(usersActions.setHideSidebar(!isShowSidebar));
   const { isScreenSm } = useResize();
 
   useEffect(() => {
-    if (errorMainPage || errorUserPage) {
+    if (error) {
       setIsOpen(true);
     }
-  }, [errorMainPage, errorUserPage]);
+  }, [error]);
 
   useEffect(() => {
     if (isScreenSm) {
-      dispatch(mainPageActions.setHideSidebar(true));
+      dispatch(usersActions.setHideSidebar(true));
     } else {
-      dispatch(mainPageActions.setHideSidebar(false));
+      dispatch(usersActions.setHideSidebar(false));
     }
   }, [isScreenSm]);
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    dispatch(mainPageActions.clearError());
-    dispatch(userPageActions.clearError());
+    dispatch(usersActions.clearError());
   };
 
   return (
@@ -64,7 +57,7 @@ function App() {
           isOpen={isOpen}
           onClose={handleCloseModal}
           title="Ошибка!"
-          message={errorUserPage || errorMainPage}
+          message={error}
         />
       </header>
       <main>{clientRouters()}</main>

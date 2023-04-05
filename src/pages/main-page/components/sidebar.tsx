@@ -1,6 +1,6 @@
 import { OPTIONS } from '@constants';
 import { useAppDispatch, useAppSelector, useResize, useUpdateEffect } from '@hooks';
-import { fetchUsersList, mainPageActions, mainPageSelectors } from '@store';
+import { fetchUsersList, usersActions, usersSelectors } from '@store';
 import { Button, Input, Select } from '@ui';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react';
 export const Sidebar: React.FC = () => {
   const [hasClearSelect, setHasClearSelect] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const filters = useAppSelector(mainPageSelectors.filtersSelector);
-  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
-  const handleClose = () => dispatch(mainPageActions.setHideSidebar(true));
+  const filters = useAppSelector(usersSelectors.filtersSelector);
+  const isShowSidebar = useAppSelector(usersSelectors.isShowSidebar);
+  const handleClose = () => dispatch(usersActions.setHideSidebar(true));
   const { isScreenSm } = useResize();
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -18,7 +18,7 @@ export const Sidebar: React.FC = () => {
     const formData = new FormData(e.currentTarget);
     const filters = Object.fromEntries([...formData]);
 
-    dispatch(mainPageActions.setFilters(filters));
+    dispatch(usersActions.setFilters(filters));
 
     if (isScreenSm) {
       handleClose();

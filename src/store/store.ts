@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mainPageReducer, userPageReducer } from '@store';
+import { usersReducer } from '@store';
 
 export const store = configureStore({
   reducer: {
-    mainPageReducer,
-    userPageReducer,
+    usersReducer,
   },
 });
 

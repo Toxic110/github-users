@@ -1,4 +1,4 @@
-import { MainPage } from '@pages';
+import { users } from '@pages';
 import { store } from '@store';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 test('render main page', () => {
   const component = renderer.create(
     <Provider store={store}>
-      <MainPage />
+      <users />
     </Provider>,
   );
   const tree = component.toJSON();

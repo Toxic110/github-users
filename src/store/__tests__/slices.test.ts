@@ -1,29 +1,21 @@
-import {
-  fetchUser,
-  fetchUsersList,
-  mainPageActions,
-  mainPageReducer,
-  userPageReducer,
-} from '@store';
+import { fetchUser, fetchUsersList, usersActions, usersReducer } from '@store';
 
-const mainPageInitialState = {
+const usersInitialState = {
   error: '',
   filters: {},
   loading: false,
-  users: { items: [], total_count: 0 },
-};
-
-const userPageInitialState = {
-  loading: false,
+  isShowSidebar: false,
+  totalCount: 0,
+  ids: [],
+  entities: {},
   user: null,
-  error: '',
 };
 
 describe('main page slice', () => {
   it('should return default state when passed an empty action', () => {
-    const result = mainPageReducer(undefined, { type: '' });
+    const result = usersReducer(undefined, { type: '' });
 
-    expect(result).toEqual(mainPageInitialState);
+    expect(result).toEqual(usersInitialState);
   });
 
   it('should set filters', () => {
@@ -35,11 +27,11 @@ describe('main page slice', () => {
       followers: '',
     };
 
-    const action = { type: mainPageActions.setFilters.type, payload: filters };
+    const action = { type: usersActions.setFilters.type, payload: filters };
 
-    const result = mainPageReducer(mainPageInitialState, action);
+    const result = usersReducer(usersInitialState, action);
 
-    expect(result).toEqual({ ...mainPageInitialState, filters });
+    expect(result).toEqual({ ...usersInitialState, filters });
   });
 
   it('sould fetch user list resolved response', async () => {
@@ -61,9 +53,9 @@ describe('main page slice', () => {
 
 describe('user page slice', () => {
   it('should return default state when passed an empty action', () => {
-    const result = userPageReducer(undefined, { type: '' });
+    const result = usersReducer(undefined, { type: '' });
 
-    expect(result).toEqual(userPageInitialState);
+    expect(result).toEqual(usersInitialState);
   });
 
   it('sould fetch user resolved response', async () => {

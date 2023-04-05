@@ -1,20 +1,21 @@
-import { mainPageSelectors, userPageSelectors } from '@store';
+import { IStore } from '@interface';
+import { usersItemsSelector, usersSelectors } from '@store';
 
 const mokeStore = {
-  mainPageReducer: {
+  usersReducer: {
     loading: false,
-    users: {
-      items: [
-        {
-          avatar_url: 'asd',
-          id: 1,
-          login: 'asd',
-          type: 'asd',
-          html_url: 'asd',
-        },
-      ],
-      total_count: 0,
+    ids: [0],
+    entities: {
+      '0': {
+        avatar_url: 'asd',
+        id: 1,
+        login: 'asd',
+        type: 'asd',
+        html_url: 'asd',
+      },
     },
+    isShowSidebar: false,
+    totalCount: 0,
     error: '',
     filters: {
       location: 'china',
@@ -23,8 +24,6 @@ const mokeStore = {
       language: 'javascript',
       followers: '',
     },
-  },
-  userPageReducer: {
     user: {
       avatar_url: 'asd',
       id: 1,
@@ -38,53 +37,37 @@ const mokeStore = {
       name: 'asd',
       company: 'asd',
     },
-    loading: false,
-    error: '',
   },
 };
 
 describe('should main page selectors', () => {
   it('should return correct users', () => {
-    const result = mainPageSelectors.usersSelector(mokeStore);
+    const result = Object.assign({}, usersItemsSelector(mokeStore));
 
-    expect(result).toEqual(mokeStore.mainPageReducer.users.items);
+    expect(result).toEqual(mokeStore.usersReducer.entities);
   });
 
   it('should return correct filers', () => {
-    const result = mainPageSelectors.filtersSelector(mokeStore);
+    const result = usersSelectors.filtersSelector(mokeStore);
 
-    expect(result).toEqual(mokeStore.mainPageReducer.filters);
+    expect(result).toEqual(mokeStore.usersReducer.filters);
   });
 
   it('should return correct error', () => {
-    const result = mainPageSelectors.errorSelector(mokeStore);
+    const result = usersSelectors.errorSelector(mokeStore as unknown as IStore);
 
     expect(result).toBeNull;
   });
 
   it('should return correct loading', () => {
-    const result = mainPageSelectors.loadingSelector(mokeStore);
+    const result = usersSelectors.loadingSelector(mokeStore);
 
     expect(result).toBeNull;
   });
-});
 
-describe('should user page selectors', () => {
   it('should return correct user', () => {
-    const result = userPageSelectors.userSelector(mokeStore);
+    const result = usersSelectors.userSelector(mokeStore);
 
-    expect(result).toEqual(mokeStore.userPageReducer.user);
-  });
-
-  it('should return correct error', () => {
-    const result = userPageSelectors.errorSelector(mokeStore);
-
-    expect(result).toBeNull;
-  });
-
-  it('should return correct loading', () => {
-    const result = userPageSelectors.loadingSelector(mokeStore);
-
-    expect(result).toBeNull;
+    expect(result).toEqual(mokeStore.usersReducer.user);
   });
 });

@@ -1,6 +1,6 @@
 import { Loader } from '@components';
 import { useAppDispatch, useAppSelector } from '@hooks';
-import { fetchUsersList, mainPageActions, mainPageSelectors } from '@store';
+import { fetchUsersList, usersActions, usersSelectors } from '@store';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 
@@ -8,10 +8,10 @@ import { Sidebar } from './components/sidebar';
 import { MainTable } from './components/table';
 
 export const MainPage = () => {
-  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
+  const isShowSidebar = useAppSelector(usersSelectors.isShowSidebar);
   const dispatch = useAppDispatch();
-  const handleArrowClick = () => dispatch(mainPageActions.setHideSidebar(!isShowSidebar));
-  const loading = useAppSelector(mainPageSelectors.loadingSelector);
+  const handleArrowClick = () => dispatch(usersActions.setHideSidebar(!isShowSidebar));
+  const loading = useAppSelector(usersSelectors.loadingSelector);
 
   useEffect(() => {
     dispatch(fetchUsersList({}));

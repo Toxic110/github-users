@@ -1,10 +1,11 @@
 import { URLS } from '@constants';
 import { useAppDispatch, useAppSelector, useSort } from '@hooks';
-import { ISortTypes, IUser } from '@interface';
-import { fetchUsersList, mainPageSelectors } from '@store';
+import { ISortTypes, IStore, IUser } from '@interface';
+import { fetchUsersList, usersItemsSelector, usersSelectors } from '@store';
 import { Table } from '@ui';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 /** Интерфейс заголовков таблицы. */
@@ -106,9 +107,9 @@ export const MainTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const dispatch = useAppDispatch();
-  const totalCount = useAppSelector(mainPageSelectors.totalCountSelector);
-  const items = useAppSelector(mainPageSelectors.usersSelector);
-  const isShowSidebar = useAppSelector(mainPageSelectors.isShowSidebar);
+  const totalCount = useAppSelector(usersSelectors.totalCountSelector);
+  const items = useSelector((state: IStore) => usersItemsSelector(state));
+  const isShowSidebar = useAppSelector(usersSelectors.isShowSidebar);
 
   if (!items) {
     return null;
