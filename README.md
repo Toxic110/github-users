@@ -34,3 +34,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 docker build . -t github-users \
 docker run -it --rm -p 1337:80 github-users \
 http://localhost:1337/
+
+### `docker compose`
+
+To start a container
+docker-compose up -d
+
+To end a container
+docker-compose down
