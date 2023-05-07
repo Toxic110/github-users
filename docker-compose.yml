@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  frontend:
+    image: arm64v8/node:16.13
+    tty: true
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    container_name: github-users
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
+    ports:
+      - 3000:3000
+    command: npm run start:docker
