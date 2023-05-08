@@ -1,11 +1,13 @@
+import './styles.scss';
+
 import { Loader } from '@components';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { fetchUsersList, usersActions, usersSelectors } from '@store';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 
-import { Sidebar } from './components/sidebar';
-import { MainTable } from './components/table';
+import { Sidebar } from './components/sidebar/sidebar';
+import { MainTable } from './components/table/table';
 
 export const MainPage = () => {
   const isShowSidebar = useAppSelector(usersSelectors.isShowSidebar);

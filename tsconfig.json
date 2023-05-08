@@ -24,7 +24,9 @@
       "@hooks": ["src/hooks"],
       "@store": ["src/store"],
       "@interface": ["src/interface"],
-      "@constants": ["src/constants"]
+      "@constants": ["src/constants"],
+      "@assets-utils": ["src/assets/styles/utils"],
+      "@assets-images": ["src/assets/images/"]
     }
   },
   "include": ["src"]

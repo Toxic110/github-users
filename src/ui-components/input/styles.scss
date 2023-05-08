@@ -1,0 +1,34 @@
+@import '@assets-utils/_variables.scss';
+
+.ui-input {
+  width: 100%;
+  height: 46px;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $font-family-text;
+  color: $color-black;
+  border: 1px solid $color-grey;
+  border-radius: $radius;
+
+  &--small {
+    height: 34px;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+}
+
+.ui-label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: $color-grey-hard;
+  cursor: pointer;
+
+  &--small {
+    margin-bottom: 0;
+    margin-right: 5px;
+    font-size: 14px;
+    color: $color-black;
+    white-space: nowrap;
+  }
+}

@@ -1,3 +1,4 @@
-export * from './error-component';
-export * from './loader';
-export * from './not-found';
+export * from './error-component/error-component';
+export * from './header';
+export * from './loader/loader';
+export * from './not-found/not-found';

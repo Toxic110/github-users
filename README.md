@@ -39,6 +39,7 @@ http://localhost:1337/
 
 To start a container
 docker-compose up -d
+http://localhost:3000/
 
 To end a container
 docker-compose down
