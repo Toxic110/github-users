@@ -84,11 +84,10 @@ export const Pagination: FC<IPagination> = (props) => {
         <span className="ui-pagination-count__label">Показать по</span>
         <div className="ui-pagination-count__select">
           <Select
-            name="pagination-count"
             options={paginationCountOptions}
             extraSmall
-            valueSetter={onPageSizeChange}
-            defaultValue={paginationCountOptions[0]}
+            value={pageSize}
+            onChange={onPageSizeChange}
             menuPosition="top"
           />
         </div>

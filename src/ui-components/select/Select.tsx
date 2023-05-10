@@ -1,7 +1,7 @@
 import './styles.scss';
 
 import classNames from 'classnames';
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
 
 /** Позиция дропдауна. */
 type MenuPosition = 'bottom' | 'top';
@@ -17,37 +17,30 @@ interface SelectOption {
 /** Пропсы селекта. */
 interface ISelect {
   /** Имя. */
-  name: string;
+  name?: string;
+  /** Значение селекта. */
+  value: string | number;
+  /** Функция изменения значения. */
+  onChange(value: string): void;
   /** Именование селекта. */
   label?: string;
   /** Массив опций. */
   options: SelectOption[];
   /** Признак приминения других стилей. */
   extraSmall?: boolean;
-  /** Функция выбрасывающая значение наружу. */
-  valueSetter?: (val: number | string) => void;
-  /** Дефолтное значение. */
-  defaultValue?: SelectOption;
   /** Позиция списка. */
   menuPosition?: MenuPosition;
-  /** Признак очистки селекта. */
-  clearSelect?: boolean;
 }
 
 export const Select: FC<ISelect> = ({
+  name,
   label,
   options,
-  name,
   extraSmall,
-  valueSetter,
-  defaultValue,
   menuPosition = 'bottom',
-  clearSelect,
+  value,
+  onChange,
 }) => {
-  const [selectedValue, setSelectedValue] = useState<number | string>(
-    defaultValue?.value || '',
-  );
-  const [selectedLabel, setSelectedLabel] = useState<string>(defaultValue?.label || '');
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -58,13 +51,6 @@ export const Select: FC<ISelect> = ({
     };
   }, [ref]);
 
-  useEffect(() => {
-    if (clearSelect) {
-      setSelectedValue('');
-      setSelectedLabel('');
-    }
-  }, [clearSelect]);
-
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -74,19 +60,15 @@ export const Select: FC<ISelect> = ({
     [ref.current],
   );
 
-  const handleChangeValue = useCallback(
-    (value: number | string, label: string) => {
-      setSelectedValue(value);
-      setSelectedLabel(label);
-      setIsOpen(false);
-      if (valueSetter) {
-        valueSetter(value);
-      }
-    },
-    [selectedValue],
-  );
+  const handleChangeValue = (value: string) => {
+    onChange(value);
+    setIsOpen(false);
+  };
 
   const handleSetVisible = () => setIsOpen(!isOpen);
+
+  const selectedLabel = options.filter((opt) => String(opt.value) === String(value))[0]
+    ?.label;
 
   return (
     <div
@@ -114,8 +96,8 @@ export const Select: FC<ISelect> = ({
       </div>
       <input
         name={name}
-        value={selectedValue}
-        onChange={() => setSelectedValue}
+        value={value}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
         hidden
         data-testid="ui-select-value"
       />
@@ -136,9 +118,9 @@ export const Select: FC<ISelect> = ({
                 key={option.value}
                 className={classNames(
                   'ui-select__menu-item',
-                  selectedValue === option.value ? 'ui-select__menu-item--active' : '',
+                  value === String(option.value) ? 'ui-select__menu-item--active' : '',
                 )}
-                onClick={() => handleChangeValue(option.value, option.label)}
+                onClick={() => handleChangeValue(String(option.value))}
               >
                 {option.label}
               </li>

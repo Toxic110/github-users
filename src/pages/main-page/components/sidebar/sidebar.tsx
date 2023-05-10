@@ -15,6 +15,9 @@ export const Sidebar: React.FC = () => {
   const handleClose = () => dispatch(usersActions.setHideSidebar(true));
   const { isScreenSm } = useResize();
 
+  const [locationValue, setLocationValue] = useState<string>('');
+  const [languageValue, setLanguageValue] = useState<string>('');
+
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -28,7 +31,8 @@ export const Sidebar: React.FC = () => {
   };
 
   const handleClearFilter = () => {
-    setHasClearSelect(true);
+    setLocationValue('');
+    setLanguageValue('');
   };
 
   useUpdateEffect(() => {
@@ -54,9 +58,10 @@ export const Sidebar: React.FC = () => {
         <div className="sidebar-body__row">
           <Select
             name="location"
+            value={locationValue}
+            onChange={setLocationValue}
             label="Локация"
             options={OPTIONS.locationOptions}
-            clearSelect={hasClearSelect}
           />
         </div>
         <div className="sidebar-body__row">
@@ -68,9 +73,10 @@ export const Sidebar: React.FC = () => {
         <div className="sidebar-body__row">
           <Select
             name="language"
+            value={languageValue}
+            onChange={setLanguageValue}
             label="Язык"
             options={OPTIONS.languageOptions}
-            clearSelect={hasClearSelect}
           />
         </div>
         <div className="sidebar-body__row">
